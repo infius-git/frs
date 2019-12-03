@@ -1,0 +1,103 @@
+.navbar-navc li a {
+    padding: 6px !important;
+    font-weight: 500;
+}
+.navbar-navc li a i {
+    font-size: 16px !important;
+}
+.sidebar {
+    padding: 45px 0 0 !important;
+}
+.third_colunm
+{
+    margin-top: 71px;
+    
+    border-radius: 5px;
+}
+.progress-danger .bar, .progress .bar-success {
+    background: #ff3000!important;
+}
+.progress-info .bar, .progress .bar-info {
+    background: #fff000!important;
+}
+.progress-warning .bar, .progress .bar-warning {
+    background: #0dee32!important;
+}
+.alerts {
+    color: #ff3000!important;
+}
+.ldetection {
+    color: #fff000!important;
+}
+.detected {
+    color: #0dee32!important;
+}
+
+.white
+{
+    color: #fff;
+}
+h4 {
+    font-size: 20px !important;
+    color: #ffffff !important;
+    font-family: 'Barlow Semi Condensed', sans-serif !important;
+    font-weight: 400 !important;
+    text-transform: uppercase !important;
+}
+hr{
+    border-color:#fff;
+}
+
+.team_stats_section
+{
+    background: #343542;
+    border-radius:5px;
+}
+.mt12
+{
+    margin-top:12px;
+}
+.usernametxt
+{
+    color: white;
+    font-size: 18px;
+    margin-top: 10px;
+}
+.Surveillance {
+    width: 515px !important;
+    -ms-flex: inherit !important;
+    flex: inherit !important;
+    max-width: inherit !important;
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+    float: left;
+    padding-bottom: 10px;
+}
+.orangebg
+{
+    background:#f6b93a;
+}
+.redbg
+{
+    background:#e1784e;
+}
+.greybg
+{
+    background:#c0a987;
+}
+.dgreybg
+{
+    background:#595551;
+}
+.rfcounttxt
+{
+    color: white;
+    font-size: 72px;
+    margin: 0px 10px;
+}
+.rftxt
+{
+    color: white;
+    font-size: 30px;
+    margin: 0px 10px;
+}

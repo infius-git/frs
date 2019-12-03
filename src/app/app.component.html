@@ -1,5 +1,5 @@
 <div class="overlay" style="display:none;"></div>
-<div *ngIf="isDataAvailable">
+<div *ngIf="isDataAvailable" style="display: none;">
     <top-toolbar [topData]="topBar" [visitorMetrics]="visitorMetrics" [alertFeedMetrics]="alertFeedMetrics" (openNewTable)="openNewTable($event)"></top-toolbar>
     <div class="container-fluid main_container">
         <div class="row">
@@ -40,8 +40,10 @@
     </div>
 </div>
 
-<footer id="footer">
+<footer id="footer" style="display: none;">
     <div *ngIf="isDataAvailable">
         <foot-bar [parkingMetrics]="parkingMetrics" (openNewTable)="openNewTable($event)"></foot-bar>
     </div>
 </footer>
+
+<report-component></report-component>

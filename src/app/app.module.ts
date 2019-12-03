@@ -35,6 +35,7 @@ import { GateDetailsComponent } from './component/gateMetrics/gateDetails/gateDe
 import { BlacklistedVisitorPopupComponent } from './component/footer/blacklistedVisitorPopup/blacklistedVisitorPopup.component';
 import { ZonalDetailsComponent } from './component/map/zonalDetails/zonalDetails.component';
 import { InterzonalVisitorPopupComponent } from './component/footer/interzonalVisitorPopup/interzonalVisitorPopup.component';
+import { ReportComponentComponent } from './component/report-component/report-component.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { InterzonalVisitorPopupComponent } from './component/footer/interzonalVi
         GateDetailsComponent,
         BlacklistedVisitorPopupComponent,
         ZonalDetailsComponent,
-        InterzonalVisitorPopupComponent
+        InterzonalVisitorPopupComponent,
+        ReportComponentComponent
     ],
     imports: [
         BrowserModule,
