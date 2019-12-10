@@ -58,14 +58,14 @@
             </li>
     </div>
     <div class="col-md-9" style="margin-top: 63px;">
-            <table datatable [dtOptions]="dtOptions" class="row-border hover">
+            <table *ngIf="alldatas[0]" datatable [dtOptions]="dtOptions" class="row-border hover">
                     <thead>
                         <tr>
                             <th *ngFor="let filterCol of displayedColumnsAlertReport">{{filterCol}}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let element of alldata">
+                        <tr *ngFor="let element of alldatas">
                             <td>pixel</td>
                             <td>{{element.SubjectName}}</td>
                             <td>{{element.Id}}</td>
@@ -78,7 +78,9 @@
               
                     </tbody>
                 </table>
+                <div *ngFor="let element of alldatas" (click)="addrow()">{{element.Id}}</div>
     </div>
+    
     <div class="col-md-3 third_colunm">
         <div class="col-sm-12 col-md-12 col-lg-12 team_stats_section" style="padding: 15px 30px;">
             <h4>herta thershold</h4>
