@@ -101,3 +101,151 @@ hr{
     font-size: 30px;
     margin: 0px 10px;
 }
+
+
+
+
+
+.visitor_detailstbl table
+{
+    margin-top:48px;
+}
+.visitor_detailstbl table tr td {
+    padding: .75rem 13px !important;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    font-size: 18px !important;
+    vertical-align: middle;
+    text-transform: uppercase;
+    color:#dbdcde;
+}
+.visitormaintitle
+{
+    text-transform: uppercase;
+    color: #b6b7bc;
+    font-size: 21px !important;
+    font-weight: bold;
+    margin-top: -15px;
+    margin-bottom: 21px;
+    border-bottom: 1px solid #dbdcde;
+    padding-bottom: 10px;
+}
+.visitor_details p
+{
+    color:#dbdcde;
+    font-size: 17px !important;
+}
+.popup_content h4 {
+    font-size: 24px !important;
+    color: #dbdcde !important;
+    padding-top: 12px;
+    margin-bottom: 0;
+}
+.visitor_profile {
+    border: 1px solid #d1d1d1;
+}
+#flatno
+{
+    color:#fff !important;
+}
+.white_content_visitor {
+    position: absolute;
+    top: 11%;
+    left: -135%;
+    width: 108%;
+    height: auto;
+    background-color: #343542;
+    z-index: 99999;
+    overflow: auto;
+    padding: 0;
+    border-radius: 12px;
+    max-width: inherit;
+    box-shadow: 1px 2px 7px #b5b5b5;
+    /* margin-top: -50px !important; */
+}
+/* .visitor_details table tr td:first-child {
+    color: #333 !important;
+    border:none;
+} */
+
+.white_content_visitor h3 {
+    font-size: 19px;
+    color: #e1e2ee;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    padding-left: 15px;
+    line-height: 53px;
+    background: #1f1f1f !important;
+}
+.expandicon
+{
+    margin-right: 2% !important;
+    margin-bottom: 10px;
+    margin-top: -10px !important;
+    color: #fff;
+    opacity: 1;
+    font-weight: normal;
+}
+button.close {
+    margin-right: 26px ;
+    margin-top: 7px ;
+    opacity: 1 ;
+    font-size: 37px;
+    color: #fff;
+    font-weight: normal;
+}
+.qrimage
+{
+    width: 41%;
+    margin-top: 75px;
+    margin-left: 92px;
+}
+.fa-expand-arrows-alt
+{
+    font-weight: 500;
+    font-size: 21px;
+    position: absolute;
+    right: 17px;
+    top: 11px;
+}
+.visitor_marics tbody {
+    display: block !important;
+    overflow: hidden;
+    height: 92px;
+}
+.ng-star-inserted
+{
+    text-align: center;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+  .visitor_marics table th{
+      text-align: left;
+  }
+ .visitor_details h4{
+     color:#fff !important;
+ }
+ .visitor_detailstbl table tr td:nth-of-type(2)
+ {
+     color:#fff !important;
+     font-size: 19px !important;
+    font-weight: 600;
+ }

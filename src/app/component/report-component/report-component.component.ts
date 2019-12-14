@@ -2,7 +2,8 @@ import { ProximityService } from './../../service';
 import { Component, OnInit } from '@angular/core';
 import { webSocket } from "rxjs/webSocket";
 import * as $ from 'jquery';
-const subject = webSocket("ws://localhost:9000/demo/server.php");
+const subject = webSocket("ws://localhost:9000/webserver.js");
+//const subject = webSocket("ws://localhost:9000/demo/server.php");
 @Component({
   selector: 'report-component',
   templateUrl: './report-component.component.html',
@@ -15,6 +16,7 @@ export class ReportComponentComponent implements OnInit {
   count:number=0;
   tablearray:any;
   tablerow:any;
+  openReportTbl:boolean=false;
 
   constructor(private service:ProximityService) { 
    
@@ -22,6 +24,7 @@ export class ReportComponentComponent implements OnInit {
   adddata(r) {
     if(r.message.indexOf("connected")<0)
       {
+        
         this.tablearray=[];
         this.tablearray.push({"Id":this.count,"AlarmType":"User Identified","CameraId":"Source4","Comments":"","SubjectGroup":"IT","SubjectId":54,"SubjectLastName":"awale","SubjectName":"vishal","TimeStamp":"\/Date(-62135596800000+0530)\/","total":0});
         this.tablearray.forEach(element => {
@@ -36,7 +39,6 @@ export class ReportComponentComponent implements OnInit {
           <td>RamPal</td>
           </tr>`;
         });
-        alert(this.tablerow);
         $(this.tablerow).insertBefore('#DataTables_Table_0_wrapper>table>tbody>tr:first');
       }
       else
@@ -77,6 +79,18 @@ export class ReportComponentComponent implements OnInit {
 
      
     
+  }
+
+  openReportTable(data)
+  {
+    this.openReportTbl=true;
+    alert(this.openReportTbl);
+  }
+
+  closePopUp()
+  {
+    this.openReportTbl=false;
+    alert(this.openReportTbl);
   }
 
 }
