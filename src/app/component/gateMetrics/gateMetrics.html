@@ -32,16 +32,16 @@
     </div> -->
     <!--Gate METRICS Popup Section End-->
     <div id="tabsJustifiedContent" class="tab-content">
-    <h4>Gate metrics</h4>
-    <ul id="tabsJustified" class="nav nav-tabs">
-        <li *ngFor="let item of gateCount" style="cursor:pointer;" class="nav-item"><a href="javascript:void(0)" [attr.data-target]="'#gate'+item.value" (click)="onGateSelected(item.label)" data-toggle="tab" class="nav-link" [class.active]="item.value===selectedLabel"><span>{{item.value}}</span></a></li>
-    </ul>
+        <h4>Gate metrics</h4>
+        <ul id="tabsJustified" class="nav nav-tabs">
+            <li *ngFor="let item of gateCount" style="cursor:pointer;" class="nav-item"><a href="javascript:void(0)" [attr.data-target]="'#gate'+item.value" (click)="onGateSelected(item.label)" data-toggle="tab" class="nav-link" [class.active]="item.value===selectedLabel"><span>{{item.value}}</span></a></li>
+        </ul>
     </div>
 
     <div id="" class="tab-content">
         <div [attr.id]="selectedGate" class="tab-pane gatematricsbody  fade active show">
             <h4>Gate Pass metrics <span *ngIf="selectedGate">({{selectedGate}})</span></h4>
-            <div id="gateAlet" class="alert_list">
+            <div id="gateAlert" class="alert_list">
                 <ul>
                     <li *ngFor="let gate of selectedMetric" [class]="gate.type"><i class="fa fa-circle text-warning"></i><a data-toggle="popover" data-container="body" data-placement="top" type="button" data-html="true" href="javascript:void(0);" id="gate">{{gate.zone_name +' '+gate.text}}</a></li>
                 </ul>
@@ -358,8 +358,3 @@
         </ul>
     </div>
 </div>
-
-
-
-
-

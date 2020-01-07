@@ -3,7 +3,7 @@ import { DOCUMENT } from '@angular/common';
 import { monitorMetrics, gatePass, alertEvents, alertFeedMetrics } from '../../../proximity';
 import * as $ from 'jquery';
 import 'lightslider';
-import { MalihuScrollbarService, } from 'ngx-malihu-scrollbar';
+import {  MalihuScrollbarService } from 'ngx-malihu-scrollbar';
 @Component({
   selector: 'monitor-metric',
   templateUrl: './gateMetrics.html',
@@ -28,7 +28,7 @@ export class GateMetricsComponent implements OnInit, AfterViewInit {
     this.gateCount = [];
   }
   ngAfterViewInit() {
-    this.mScrollbarService.initScrollbar('#gateAlet', { axis: 'y', theme: 'dark-thick', scrollButtons: { enable: true } });
+    this.mScrollbarService.initScrollbar('#gateAlert', { axis: 'y', theme: 'dark-thick', scrollButtons: { enable: true } });
     this.mScrollbarService.initScrollbar('#alertFeed', { axis: 'y', theme: 'dark-thick', scrollButtons: { enable: true } });
   }
   ngOnInit() {
