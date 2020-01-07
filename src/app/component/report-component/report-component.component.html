@@ -1,109 +1,112 @@
 <div class="row" style="width:100%;background: #3d3c4c;">
-        <nav  class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow" style="background:#343a40;height: auto !important;">
-            <div class="row">
-                <div class="col-md-2">
-            <a  class="navbar-brandc col-sm-12 col-md-12 mr-0" href="#">
-                <img  alt="Proximity" src="../../assets/images/logo.png">
-            </a>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow" style="background:#343a40;height: auto !important;">
+        <div class="row">
+            <div class="col-md-2">
+                <a class="navbar-brandc col-sm-12 col-md-12 mr-0" href="#">
+                    <img alt="Proximity" src="../../assets/images/logo.png">
+                </a>
             </div>
             <div class="col-md-8">
-            <ul  class="navbar-navc">
-                <li ><a  href="false" class="imgM active">
-                    <img src="../../assets/images/lobbyicon.png">
-                    <span >Lobby</span></a>
-                </li>
-                <li ><a  href="false">
-                    <img src="../../assets/images/flooricon.png">
-                    <span >Floor 1</span></a>
-                </li>
-                <li ><a  href="false">
-                    <img src="../../assets/images/flooricon.png">
-                    <span >Floor 2</span></a>
-                </li>
-                <li ><a  href="false">
-                    <img src="../../assets/images/flooricon.png">
-                    <span >Floor 3</span></a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-md-2">
-            <a  class="navbar-brandc col-sm-12 col-md-12 mr-0" href="#">
-                    <img  alt="Proximity" src="../../assets/images/oslogo.png">
-                </a>
-        </div>
-        </div>
-        </nav>
-    <div class="col-md-1 sidebar">
-            <li _ngcontent-sig-c2="" class="sidebar-sticky">
-                <ul _ngcontent-sig-c2="" class="nav flex-column">
-                    <li _ngcontent-sig-c2="" class="nav-item">
-                        <a _ngcontent-sig-c2="" class="nav-link active" href="#!fire">
-                            <img src="../../assets/images/reporticon.png"> <br>
-                            Report 
-                        </a>
+                <ul class="navbar-navc">
+                    <li>
+                        <a href="false" class="imgM active">
+                            <img src="../../assets/images/lobbyicon.png">
+                            <span>Lobby</span></a>
                     </li>
-                    <li _ngcontent-sig-c2="" class="nav-item">
-                        <a _ngcontent-sig-c2="" class="nav-link" href="#!cctv_cam">
-                            <img src="../../assets/images/alertreporticon.png"><br>
-                             Alert Report
-                        </a>
+                    <li>
+                        <a href="false">
+                            <img src="../../assets/images/flooricon.png">
+                            <span>Floor 1</span></a>
                     </li>
-                    <li _ngcontent-sig-c2="" class="nav-item">
-                        <a _ngcontent-sig-c2="" class="nav-link" href="#!cctv_cam">
-                            <img src="../../assets/images/alertreporticon.png"><br>
-                                CCTV CAMERAS
-                        </a>
+                    <li>
+                        <a href="false">
+                            <img src="../../assets/images/flooricon.png">
+                            <span>Floor 2</span></a>
+                    </li>
+                    <li>
+                        <a href="false">
+                            <img src="../../assets/images/flooricon.png">
+                            <span>Floor 3</span></a>
                     </li>
                 </ul>
-            </li>
+            </div>
+            <div class="col-md-2">
+                <a class="navbar-brandc col-sm-12 col-md-12 mr-0" href="#">
+                    <img alt="Proximity" src="../../assets/images/oslogo.png">
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="col-md-1 sidebar">
+        <li _ngcontent-sig-c2="" class="sidebar-sticky">
+            <ul _ngcontent-sig-c2="" class="nav flex-column">
+                <li _ngcontent-sig-c2="" class="nav-item">
+                    <a _ngcontent-sig-c2="" class="nav-link active" href="#!fire">
+                        <img src="../../assets/images/reporticon.png"> <br> Report
+                    </a>
+                </li>
+                <li _ngcontent-sig-c2="" class="nav-item">
+                    <a _ngcontent-sig-c2="" class="nav-link" href="#!cctv_cam">
+                        <img src="../../assets/images/alertreporticon.png"><br> Alert Report
+                    </a>
+                </li>
+                <li _ngcontent-sig-c2="" class="nav-item">
+                    <a _ngcontent-sig-c2="" class="nav-link" href="#!cctv_cam">
+                        <img src="../../assets/images/alertreporticon.png"><br> CCTV CAMERAS
+                    </a>
+                </li>
+            </ul>
+        </li>
     </div>
     <div class="col-md-8" style="margin-top: 63px;">
-            <table *ngIf="alldatas[0]" datatable [dtOptions]="dtOptions" class="row-border hover">
-                    <thead>
-                        <tr>
-                            <th *ngFor="let filterCol of displayedColumnsAlertReport">{{filterCol}}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let element of alldatas" (click)="openReportTable(element)">
-                            <td>pixel</td>
-                            <td>{{element.SubjectName}}</td>
-                            <td>{{element.Id}}</td>
-                            <td>Time</td>
-                            <td>Date</td>
-                            <td>Location</td>
-                            <td>{{element.AlarmType}}</td>
-                            <td>RamPal</td>
-                        </tr>
-              
-                    </tbody>
-                </table>
+        <table *ngIf="alldatas[0]" datatable [dtOptions]="dtOptions" class="row-border hover">
+            <thead>
+                <tr>
+                    <th *ngFor="let filterCol of displayedColumnsAlertReport">{{filterCol}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let element of alldatas" (click)="openReportTable(element)">
+                    <td>
+                        <img width="51px" [src]="element.SubjectFaceImage">
+                    </td>
+                    <td>{{element.SubjectName}}</td>
+                    <td>{{element.Id}}</td>
+                    <td>{{element.SubjectExpiryDate.slice(1, -1).substring(5, element.SubjectExpiryDate.slice(1, -1).length-1) | date: 'mediumTime'}}</td>
+                    <td>{{element.SubjectExpiryDate.slice(1, -1).substring(5, element.SubjectExpiryDate.slice(1, -1).length-1) | date: 'EEE, MMM d, y'}}</td>
+                    <td>{{element.CameraId ? element.CameraId : ''}}</td>
+                    <td>{{element.AlarmType}}</td>
+                    <td>{{mapIdCount[element.Id]}}</td>
+                </tr>
+
+            </tbody>
+        </table>
     </div>
-    
+
     <div class="col-md-3 col-lg-3 col-xl-3">
         <div class="col-sm-12 col-md-12 col-lg-12 team_stats_section" style="padding: 15px 30px;">
             <h4>herta thershold</h4>
             <hr>
-        <div class="row">
-            <div class="col-sm-9 col-md-9 col-lg-9 progress_chart">
-                <strong>&nbsp;</strong>
-                <span class="pull-right">67</span>
-                <div class="progress progress-danger active">
-                    <div class="bar" style="width: 67%;"></div>
-                </div>
-                <strong>&nbsp;</strong>
-                <span class="pull-right">28</span>
-                <div class="progress progress-info active">
-                    <div class="bar" style="width: 28%;"></div>
-                </div>
-                <strong>&nbsp;</strong>
-                <span class="pull-right">14</span>
-                <div class="progress progress-warning active">
-                    <div class="bar" style="width: 14%;"></div>
+            <div class="row">
+                <div class="col-sm-9 col-md-9 col-lg-9 progress_chart">
+                    <strong>&nbsp;</strong>
+                    <span class="pull-right">67</span>
+                    <div class="progress progress-danger active">
+                        <div class="bar" style="width: 67%;"></div>
+                    </div>
+                    <strong>&nbsp;</strong>
+                    <span class="pull-right">28</span>
+                    <div class="progress progress-info active">
+                        <div class="bar" style="width: 28%;"></div>
+                    </div>
+                    <strong>&nbsp;</strong>
+                    <span class="pull-right">14</span>
+                    <div class="progress progress-warning active">
+                        <div class="bar" style="width: 14%;"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row" style="margin-top: 11px;">
+            <div class="row" style="margin-top: 11px;">
                 <div class="col-sm-4 col-md-4 col-lg-4 white">
                     <span><i class="fa fa-square alerts"></i></span> Alert
                 </div>
@@ -113,17 +116,17 @@
                 <div class="col-sm-4 col-md-4 col-lg-4 white">
                     <span><i class="fa fa-square detected"></i></span> Detected
                 </div>
+            </div>
         </div>
-    </div>
-    <div class="col-sm-12 col-md-12 col-lg-12 team_stats_section" style="padding: 15px 30px; margin-top:10px">
+        <div class="col-sm-12 col-md-12 col-lg-12 team_stats_section" style="padding: 15px 30px; margin-top:10px">
             <h4>location with detection</h4>
             <hr>
-        <div class="row">
-            <div class="col-sm-7 col-md-7 col-lg-7 progress_chart">
-                <img  alt="Proximity" src="../../assets/images/chart.png">
-            </div>
-            <div class="col-sm-5 col-md-5 col-lg-5 progress_chart">
-                <div class="row">
+            <div class="row">
+                <div class="col-sm-7 col-md-7 col-lg-7 progress_chart">
+                    <img alt="Proximity" src="../../assets/images/chart.png">
+                </div>
+                <div class="col-sm-5 col-md-5 col-lg-5 progress_chart">
+                    <div class="row">
                         <div class="col-sm-12 col-md-12 col-lg-12 white mt12">
                             <span><i class="fa fa-square alerts"></i></span> Alert
                         </div>
@@ -138,56 +141,56 @@
                             <span><i class="fa fa-square detected"></i></span> Detected
                         </div>
                     </div>
+                </div>
             </div>
-        </div>
-             
+
         </div>
         <div class="col-sm-12 col-md-12 col-lg-12 team_stats_section" style="padding: 15px 30px; margin-top:10px">
-                <h4>alert (false detection)</h4>
-                <hr>
+            <h4>alert (false detection)</h4>
+            <hr>
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12 progress_chart">
-                   <div class="row">
+                    <div class="row">
                         <div class="col-sm-3 col-md-3 col-lg-3">
-                            <img  alt="Proximity" src="../../assets/images/userimg.png">
+                            <img alt="Proximity" src="../../assets/images/userimg.png">
                         </div>
                         <div class="col-sm-9 col-md-9 col-lg-9 usernametxt">
                             RAJESH KUMAR
                         </div>
-                   </div>
-                   <div class="row mt12">
+                    </div>
+                    <div class="row mt12">
                         <div class="col-sm-3 col-md-3 col-lg-3">
-                            <img  alt="Proximity" src="../../assets/images/userimg.png">
+                            <img alt="Proximity" src="../../assets/images/userimg.png">
                         </div>
                         <div class="col-sm-9 col-md-9 col-lg-9 usernametxt">
                             RAJESH KUMAR
                         </div>
-                   </div>
-                   <div class="row mt12">
+                    </div>
+                    <div class="row mt12">
                         <div class="col-sm-3 col-md-3 col-lg-3">
-                            <img  alt="Proximity" src="../../assets/images/userimg.png">
+                            <img alt="Proximity" src="../../assets/images/userimg.png">
                         </div>
                         <div class="col-sm-9 col-md-9 col-lg-9 usernametxt">
                             RAJESH KUMAR
                         </div>
-                   </div>
-                   <div class="row mt12">
+                    </div>
+                    <div class="row mt12">
                         <div class="col-sm-3 col-md-3 col-lg-3">
-                            <img  alt="Proximity" src="../../assets/images/userimg.png">
+                            <img alt="Proximity" src="../../assets/images/userimg.png">
                         </div>
                         <div class="col-sm-9 col-md-9 col-lg-9 usernametxt">
                             RAJESH KUMAR
                         </div>
-                   </div>
+                    </div>
                 </div>
-                
+
             </div>
-                 
-            </div>
+
+        </div>
     </div>
     <div style="width:100%;padding-left:10px;margin-bottom: 12px;background:#2c2d39;">
         <div class="Surveillance orangebg">
-            <div class="rfcounttxt">250</div>
+            <div *ngIf="count" class="rfcounttxt">{{count}}</div>
             <div class="rftxt">Total No Detected</div>
         </div>
         <div class="Surveillance redbg">
@@ -207,23 +210,23 @@
                 <div class="col-md-2"></div>
             </div>
             <div class="row" style="width: 74%; margin: auto;">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-2 rftxt" style="margin-top: 28px;">Date</div>
-                    <div class="col-md-5 rfcounttxt" style="font-size:60px;">10.11.2019</div>
-                    <div class="col-md-2"></div>
-                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2 rftxt" style="margin-top: 28px;">Date</div>
+                <div class="col-md-5 rfcounttxt" style="font-size:60px;">10.11.2019</div>
+                <div class="col-md-2"></div>
+            </div>
         </div>
         <div class="Surveillance">
-                <div class="row">
-                    <div class="col-md-12">
-                                <!-- <h4>Our Partners</h4> -->
-                                <img alt="" src="../../assets/images/rblogo.jpg">
-                                <!-- <div class="copyright">© 2018 proximity. All rights reserved.</div> -->
-                            </div>
-                    
-                    
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- <h4>Our Partners</h4> -->
+                    <img alt="" src="../../assets/images/rblogo.jpg">
+                    <!-- <div class="copyright">© 2018 proximity. All rights reserved.</div> -->
                 </div>
+
+
             </div>
+        </div>
         <div style="clear:both;"></div>
     </div>
 </div>

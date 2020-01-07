@@ -1,57 +1,41 @@
 import { ProximityService } from './../../service';
-import { Component, OnInit } from '@angular/core';
-import { webSocket } from "rxjs/webSocket";
+import { SecurityContext, Component, OnInit, OnChanges } from '@angular/core';
+import * as moment from 'moment';
+import {DomSanitizer, SafeStyle, SafeUrl, SafeHtml, SafeScript, SafeResourceUrl} from '@angular/platform-browser';
+import { webSocket } from 'rxjs/webSocket';
 import * as $ from 'jquery';
-const subject = webSocket("ws://localhost:9000/webserver.js");
-//const subject = webSocket("ws://localhost:9000/demo/server.php");
+
+const subject = webSocket('ws://localhost:8081/');
+
 @Component({
   selector: 'report-component',
   templateUrl: './report-component.component.html',
   styleUrls: ['./report-component.component.css']
 })
-export class ReportComponentComponent implements OnInit {
+
+
+export class ReportComponentComponent implements OnInit , OnChanges {
   displayedColumnsAlertReport: string[];
   dtOptions: any;
-  alldatas: any=[];
-  count:number=0;
-  tablearray:any;
-  tablerow:any;
-  openReportTbl:boolean=false;
+  alldatas: any ;
+  mapIdCount: any;
+  count = 0;
+  tablearray: any;
+  tablerow: any;
+  openReportTbl = false;
+  constructor(private service: ProximityService, private _sanitizer: DomSanitizer) {}
 
-  constructor(private service:ProximityService) { 
-   
-  }
-  adddata(r) {
-    if(r.message.indexOf("connected")<0)
-      {
-        
-        this.tablearray=[];
-        this.tablearray.push({"Id":this.count,"AlarmType":"User Identified","CameraId":"Source4","Comments":"","SubjectGroup":"IT","SubjectId":54,"SubjectLastName":"awale","SubjectName":"vishal","TimeStamp":"\/Date(-62135596800000+0530)\/","total":0});
-        this.tablearray.forEach(element => {
-          this.tablerow=`<tr _ngcontent-mib-c8="" role="row" class="odd">
-          <td>pixel</td>
-          <td>`+element.SubjectName+`</td>
-          <td>`+element.Id+`</td>
-          <td>Time</td>
-          <td>Date</td>
-          <td>Location</td>
-          <td>`+element.AlarmType+`</td>
-          <td>RamPal</td>
-          </tr>`;
-        });
-        $(this.tablerow).insertBefore('#DataTables_Table_0_wrapper>table>tbody>tr:first');
-      }
-      else
-      {
-       // alert('connected');
-      }
-  }
-  
   ngOnInit() {
-    
-    this.service.getAlertData().subscribe(data => {
-        
-      this.alldatas.push(data);
+    this.service.getFRSData().subscribe(frsData => {
+      this.alldatas = frsData.data;
+      this.mapIdCount = frsData.mapIdCount[0];
+      for (const key in this.mapIdCount) {
+        if (this.mapIdCount.hasOwnProperty(key)) {
+          this.count = this.count +  this.mapIdCount[key];
+        }
+      }
+    });
+
       this.dtOptions = {
         dom: 'Bfrtip',
         buttons: [
@@ -60,8 +44,8 @@ export class ReportComponentComponent implements OnInit {
           'excel',
           'pdf',
         ]
-      }; 
-      this.displayedColumnsAlertReport = ['Pixel',
+      };
+    this.displayedColumnsAlertReport = ['Image',
     'Name',
     'Id',
     'Time',
@@ -69,27 +53,74 @@ export class ReportComponentComponent implements OnInit {
     'Location',
     'Detection status',
     'No of Detection'];
-    });
-    
     subject.subscribe(
-        msg => this.adddata(msg), // Called whenever there is a message from the server.
-        err => console.log(err), // Called if at any point WebSocket API signals some kind of error.
-        () => console.log('complete') // Called when connection is closed (for whatever reason).
+      msg => this.adddata(msg), // alert('msg' + msg),  Called whenever there is a message from the server.
+      err => console.log(err), // Called if at any point WebSocket API signals some kind of error.
+      () => console.log('complete') // Called when connection is closed (for whatever reason).
       );
-
-     
-    
   }
 
-  openReportTable(data)
-  {
-    this.openReportTbl=true;
+  ngOnChanges() {
+    this.service.getFRSData().subscribe(frsData => {
+      this.alldatas = frsData.data;
+      this.mapIdCount = frsData.mapIdCount[0];
+      for (const key in this.mapIdCount) {
+        if (this.mapIdCount.hasOwnProperty(key)) {
+          this.count = this.count +  this.mapIdCount[key];
+        }
+      }
+    });
+  }
+
+ adddata(r) {
+        this.tablearray = [];
+        this.tablearray.push(r.message);
+        this.tablearray.forEach(element => {
+          if (this.mapIdCount !== undefined) {
+            this.mapIdCount[element.Id] = this.mapIdCount[element.Id] +  1;
+            this.count = this.count + 1;
+          }
+          const dateStr = moment(element.SubjectExpiryDate).format('ddd, MMM D, YYYY');
+          const timeStr = moment(element.SubjectExpiryDate).format('h:mm:ss A');
+          this.tablerow = `<tr _ngcontent-mib-c8="" role="row" class="odd">
+          <td>
+            <img width="51px"  src="` + element.SubjectFaceImage + `">
+          </td>
+          <td>` + element.SubjectName + `</td>
+          <td>` + element.Id + `</td>
+          <td>` + timeStr + `</td>
+          <td>` + dateStr + `</td>
+          <td>` + element.CameraId + `</td>
+          <td>` + element.AlarmType + `</td>
+          <td>` + ((this.mapIdCount !== undefined) ? this.mapIdCount[element.Id] : '-') + `</td>
+          </tr>`;
+        });
+        $(this.tablerow).insertBefore('#DataTables_Table_0_wrapper>table>tbody>tr:first');
+  }
+
+  /* public transform(value: string, type: string): SafeHtml | SafeStyle | SafeScript | SafeUrl | SafeResourceUrl {
+	const filePath =  `http://localhost:8080/app/api/images/${value}`;
+  	switch (type) {
+			case 'html':
+				return this._sanitizer.bypassSecurityTrustHtml(value);
+			case 'style':
+				return this._sanitizer.bypassSecurityTrustStyle(value);
+			case 'script':
+				return this._sanitizer.bypassSecurityTrustScript(value);
+			case 'url':
+				return this._sanitizer.sanitize(SecurityContext.URL, filePath);
+			case 'resourceUrl':
+				return this._sanitizer.bypassSecurityTrustResourceUrl(filePath);
+			default:
+				throw new Error(`Unable to bypass security for invalid type: ${type}`);
+		}
+  } */
+  openReportTable(data) {
+    this.openReportTbl = true;
     alert(this.openReportTbl);
   }
-
-  closePopUp()
-  {
-    this.openReportTbl=false;
+  closePopUp() {
+    this.openReportTbl = false;
     alert(this.openReportTbl);
   }
 

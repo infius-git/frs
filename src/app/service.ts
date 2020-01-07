@@ -66,13 +66,8 @@ export class ProximityService {
             );
     }
 
-    getAlertData(): Observable<any> {
-        // return this.http.get<mapData>('https://s3.us-east-2.amazonaws.com/xtier/proximity/delhiOne/map.json')
-        return this.http.get<any>('./assets/mock-data/GetLiveAlarms_Identified.json')
-            .pipe(
-                tap(_ => console.log('fetched heroes')),
-                catchError(this.handleError<any>('getmapdata'))
-            );
+    getFRSData(): Observable<any> {
+        return this.http.get<any>('http://localhost:8080/app/api');
     }
 
     getAllUserData(): Observable<any> {
