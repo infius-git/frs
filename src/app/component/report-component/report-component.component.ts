@@ -117,11 +117,8 @@ export class ReportComponentComponent implements OnInit , OnChanges {
   } */
   openReportTable(data) {
     this.openReportTbl = true;
-    alert(this.openReportTbl);
   }
   closePopUp() {
     this.openReportTbl = false;
-    alert(this.openReportTbl);
   }
-
 }

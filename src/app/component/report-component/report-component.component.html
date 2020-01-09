@@ -59,7 +59,7 @@
         </li>
     </div>
     <div class="col-md-8" style="margin-top: 63px;">
-        <table *ngIf="alldatas[0]" datatable [dtOptions]="dtOptions" class="row-border hover">
+        <table *ngIf="alldatas" datatable [dtOptions]="dtOptions" class="row-border hover">
             <thead>
                 <tr>
                     <th *ngFor="let filterCol of displayedColumnsAlertReport">{{filterCol}}</th>
@@ -148,44 +148,18 @@
         <div class="col-sm-12 col-md-12 col-lg-12 team_stats_section" style="padding: 15px 30px; margin-top:10px">
             <h4>alert (false detection)</h4>
             <hr>
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12 progress_chart">
-                    <div class="row">
-                        <div class="col-sm-3 col-md-3 col-lg-3">
-                            <img alt="Proximity" src="../../assets/images/userimg.png">
-                        </div>
-                        <div class="col-sm-9 col-md-9 col-lg-9 usernametxt">
-                            RAJESH KUMAR
-                        </div>
-                    </div>
+            <div *ngFor="let element of alldatas" class="row" (click)="openReportTable(element)">
+                <div *ngIf="element.AlarmType==='User Detected'" class="col-sm-12 col-md-12 col-lg-12 progress_chart">
                     <div class="row mt12">
-                        <div class="col-sm-3 col-md-3 col-lg-3">
-                            <img alt="Proximity" src="../../assets/images/userimg.png">
+                        <div class="col-sm-5 col-md-5 col-lg-5">
+                            <img alt="Proximity" [src]="element.SubjectFaceImage">
                         </div>
-                        <div class="col-sm-9 col-md-9 col-lg-9 usernametxt">
-                            RAJESH KUMAR
-                        </div>
-                    </div>
-                    <div class="row mt12">
-                        <div class="col-sm-3 col-md-3 col-lg-3">
-                            <img alt="Proximity" src="../../assets/images/userimg.png">
-                        </div>
-                        <div class="col-sm-9 col-md-9 col-lg-9 usernametxt">
-                            RAJESH KUMAR
-                        </div>
-                    </div>
-                    <div class="row mt12">
-                        <div class="col-sm-3 col-md-3 col-lg-3">
-                            <img alt="Proximity" src="../../assets/images/userimg.png">
-                        </div>
-                        <div class="col-sm-9 col-md-9 col-lg-9 usernametxt">
-                            RAJESH KUMAR
+                        <div class="col-sm-7 col-md-7 col-lg-7 usernametxt">
+                            {{element.SubjectName}}
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
     </div>
     <div style="width:100%;padding-left:10px;margin-bottom: 12px;background:#2c2d39;">
@@ -221,10 +195,7 @@
                 <div class="col-md-12">
                     <!-- <h4>Our Partners</h4> -->
                     <img alt="" src="../../assets/images/rblogo.jpg">
-                    <!-- <div class="copyright">© 2018 proximity. All rights reserved.</div> -->
                 </div>
-
-
             </div>
         </div>
         <div style="clear:both;"></div>
