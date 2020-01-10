@@ -1,3 +1,4 @@
+import { alertFeedMetrics } from './../../../proximity';
 import { Component, OnInit,Input } from '@angular/core';
 import {entrySummary} from '../../../proximity';
 import * as $ from "jquery";
@@ -9,13 +10,13 @@ import { AmChart } from "@amcharts/amcharts3-angular";
 })
 export class EntrySummaryComponent implements OnInit {
 @Input() entrySummary:entrySummary;
-@Input() alertFeedMetrics:any;
+@Input() alertFeedMetrics:alertFeedMetrics;
 chart:Chart;
 options:any;
   constructor() {
    }
 
-  ngOnInit() {      
+  ngOnInit() {    
    this.drawProgressBar();
    this.drawArmChart();
    this.drawGraphChart();

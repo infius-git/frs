@@ -1640,8 +1640,16 @@ polygon.active {
 }
 .dataTable thead th
 {
-    font-size: 17px !important;
+    font-size: 1.3vw;
     font-weight: normal !important;
+}
+.dataTable tbody td
+{
+    font-size: 1.1vw;
+    font-weight: normal !important;
+}
+.dt-buttons button{
+    font-size: .8vw !important;
 }
 .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
     cursor: default;

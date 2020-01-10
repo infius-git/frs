@@ -1,6 +1,25 @@
 .navbar-navc li a {
     padding: 6px !important;
     font-weight: 500;
+    font-size: 1.3vw;
+}
+.navbar-navc li a img
+{
+    width: 2vw;
+    margin-bottom: .2vw;
+}
+.navbar .row{
+    width: 100%;
+}
+.sidebar-sticky {
+    width: 11vw;
+}
+.sidebar-sticky ul li a{
+    font-size: 1.1vw !important;
+}
+.sidebar-sticky ul li a img{
+    width: 1.3vw !important;
+    padding-bottom: 10px;
 }
 .navbar-navc li a i {
     font-size: 16px !important;
@@ -64,14 +83,20 @@ hr{
     margin-top: 10px;
 }
 .Surveillance {
-    width: 515px !important;
+    width:20% !important;
     -ms-flex: inherit !important;
     flex: inherit !important;
     max-width: inherit !important;
-    margin-left: 5px !important;
-    margin-right: 5px !important;
-    float: left;
     padding-bottom: 10px;
+    margin: 0 !important;
+}
+.falseborder
+{
+    border:2px solid red;
+}
+.trueborder
+{
+    border:2px solid green;
 }
 .orangebg
 {
@@ -92,13 +117,13 @@ hr{
 .rfcounttxt
 {
     color: white;
-    font-size: 72px;
+    font-size: 4em;
     margin: 0px 10px;
 }
 .rftxt
 {
     color: white;
-    font-size: 30px;
+    font-size: 1.7vw;
     margin: 0px 10px;
 }
 
@@ -249,3 +274,16 @@ button.close {
      font-size: 19px !important;
     font-weight: 600;
  }
+
+ @media screen and (min-width: 1366px) {
+    #gallery-1 img {width:375px;}
+    }
+    @media screen and (min-width: 1440px) {
+    #gallery-1 img {width:428px;}
+    }
+    @media screen and (min-width: 1600px) {
+    #gallery-1 img {width:434px;}
+    }
+    @media screen and (min-width: 1920px) {
+    #gallery-1 img {width:540px;}
+    }
