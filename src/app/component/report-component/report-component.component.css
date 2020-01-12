@@ -3,6 +3,10 @@
     font-weight: 500;
     font-size: 1.3vw;
 }
+html
+{
+    overflow-x: hidden;
+}
 .navbar-navc li a img
 {
     width: 2vw;
@@ -90,11 +94,21 @@ hr{
     padding-bottom: 10px;
     margin: 0 !important;
 }
-.falseborder
+.detecteduserdiv
+{
+    height: 336px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.detecteduserimg
+{
+    width: 73%;
+}
+.redborder
 {
     border:2px solid red;
 }
-.trueborder
+.greenborder
 {
     border:2px solid green;
 }

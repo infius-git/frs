@@ -60,7 +60,7 @@
             </ul>
         </li>
     </div>
-    <div class="col-md-8" style="margin-top: 63px;">
+    <div class="col-md-7" style="margin-top: 63px;">
         <table *ngIf="alldatas" datatable [dtOptions]="dtOptions" class="row-border hover">
             <thead>
                 <tr>
@@ -70,7 +70,8 @@
             <tbody>
                 <tr *ngFor="let element of alldatas" (click)="openReportTable(element)">
                     <td>
-                    <img class="{{element.AlarmType+'border'}}" width="51px" [src]="element.SubjectFaceImage">
+                    <img *ngIf="element.AlarmType=='User Detected'" class="redborder" width="51px" [src]="element.SubjectFaceImage">
+                    <img *ngIf="element.AlarmType!='User Detected'" class="greenborder" width="51px" [src]="element.SubjectFaceImage">
                     </td>
                     <td>{{element.SubjectName}}</td>
                     <td>{{element.Id}}</td>
@@ -150,7 +151,7 @@
         <div class="col-sm-12 col-md-12 col-lg-12 team_stats_section" style="padding: 15px 30px; margin-top:10px">
             <h4>alert (false detection)</h4>
             <hr>
-            <div style="height:200px; overflow-y: auto;">
+            <div class="detecteduserdiv">
             <div *ngFor="let element of alldatas" class="row" (click)="openReportTable(element)">
                 <div *ngIf="element.AlarmType==='User Detected'" class="col-sm-12 col-md-12 col-lg-12 progress_chart">
                     <div class="row mt12">
