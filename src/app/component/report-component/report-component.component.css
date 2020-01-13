@@ -1,7 +1,7 @@
 .navbar-navc li a {
     padding: 6px !important;
     font-weight: 500;
-    font-size: 1.3vw;
+    /* font-size: 1.3vw; */
 }
 html
 {
@@ -9,20 +9,20 @@ html
 }
 .navbar-navc li a img
 {
-    width: 2vw;
-    margin-bottom: .2vw;
+    /* width: 2vw;
+    margin-bottom: .2vw; */
 }
 .navbar .row{
     width: 100%;
 }
 .sidebar-sticky {
-    width: 11vw;
+    /* width: 11vw; */
 }
 .sidebar-sticky ul li a{
-    font-size: 1.1vw !important;
+    /* font-size: 1.1vw !important; */
 }
 .sidebar-sticky ul li a img{
-    width: 1.3vw !important;
+    /* width: 1.3vw !important; */
     padding-bottom: 10px;
 }
 .navbar-navc li a i {
@@ -288,16 +288,181 @@ button.close {
      font-size: 19px !important;
     font-weight: 600;
  }
+ .team_stats_section
+ {
+     
+padding: 21% 15px 30px;
+ }
+ @media screen and (max-device-width:1400px) and (min-width:1200px) {
+     
+     .detecteduserdiv {
+        height: 296px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    html,body{
+        width:100vw;
+        margin: 0;
+        padding: 0;
+      }
+    }
+    @media screen and (max-device-width:1600px) and (min-width:1401px) {
+        .navbar-navc a
+        {
+            font-size:16px
+        }
+        .navbar-navc a img
+        {
+            width: 80%;
+            margin-top: 10px;
+        }
+        .team_stats_section {
+            padding: 27% 15px 30px;
+        }
+        .nav-item
+        {
+            margin-bottom:10px;
+        }
+        .nav-item a
+        {
+            font-size:20px;
+        }
+        .nav-item a img
+        {
+            width: 21%;
+        }
 
- @media screen and (min-width: 1366px) {
-    #gallery-1 img {width:375px;}
+        .white {
+            color: #fff;
+            font-size: 17px;
+        }
+        .sidebar
+        {
+            margin-top: 1%;
+        }
     }
-    @media screen and (min-width: 1440px) {
-    #gallery-1 img {width:428px;}
+    @media screen and (max-device-width:1800px) and (min-width:1601px) {
+        .navbar-navc a
+        {
+            font-size:16px
+        }
+        .navbar-navc a img
+        {
+            width: 80% !important;
+            margin-top: 10px !important;
+        }
+        .team_stats_section {
+            padding: 27% 15px 30px;
+        }
+        .sidebar-sticky ul .nav-item
+        {
+            margin-bottom:10px !important;
+        }
+        .sidebar-sticky ul .nav-item a
+        {
+            font-size:20px !important;
+        }
+        .sidebar-sticky ul .nav-item a img
+        {
+            width: 21%;
+        }
+
+        .white {
+            color: #fff;
+            font-size: 17px;
+        }
+        .sidebar
+        {
+            margin-top: 1%;
+        }
     }
-    @media screen and (min-width: 1600px) {
-    #gallery-1 img {width:434px;}
+    @media screen and (max-device-width:2000px) and (min-width:1801px) {
+        .navbar-navc a
+        {
+            font-size:16px
+        }
+        .navbar-navc a img
+        {
+            width: 80% !important;
+            margin-top: 10px !important;
+        }
+        .team_stats_section {
+            padding: 20% 15px 30px;
+        }
+        .usernametxt {
+            color: white;
+            font-size: 28px;
+            margin-top: 10px;
+        }
+        .team_stats_section h4 {
+            font-size:27px !important;
+        }
+        .sidebar-sticky ul .nav-item
+        {
+            margin-bottom:10px !important;
+        }
+        .sidebar-sticky ul .nav-item a
+        {
+            font-size:20px !important;
+        }
+        .sidebar-sticky ul .nav-item a img
+        {
+            width: 21%;
+        }
+
+        .white {
+            color: #fff;
+            font-size: 22px;
+        }
+        .sidebar
+        {
+            margin-top: 1%;
+        }
     }
-    @media screen and (min-width: 1920px) {
-    #gallery-1 img {width:540px;}
+    @media screen and (max-device-width:2500px) and (min-width:2001px) {
+        .navbar-navc a
+        {
+            font-size:25px
+        }
+        .navbar-navc a img
+        {
+            width: 80% !important;
+            margin-top: 10px !important;
+        }
+        .team_stats_section {
+            padding: 20% 15px 30px;
+        }
+        .usernametxt {
+            color: white;
+            font-size: 34px;
+            margin-top: 10px;
+        }
+        .team_stats_section h4 {
+            font-size: 33px !important;
+        }
+        .sidebar-sticky ul .nav-item
+        {
+            margin-bottom:10px !important;
+        }
+        .sidebar-sticky ul .nav-item a
+        {
+            font-size: 28px !important;
+            line-height: 30px;
+        }
+        .sidebar-sticky ul .nav-item a img
+        {
+            width: 31%;
+        }
+
+        .white {
+            color: #fff;
+            font-size: 29px;
+        }
+        .sidebar
+        {
+            margin-top: 1%;
+        }
+    }
+    html{
+        overflow-x:hidden;
     }
