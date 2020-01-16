@@ -19,7 +19,8 @@ export class ReportComponentComponent implements OnInit , OnChanges {
   dtOptions: any;
   alldatas: any ;
   mapIdCount: any;
-  count = 0;
+  identifiedCount = 0;
+  notIdentifiedCount = 0;
   tablearray: any;
   tablerow: any;
   openReportTbl = false;
@@ -27,13 +28,10 @@ export class ReportComponentComponent implements OnInit , OnChanges {
 
   ngOnInit() {
     this.service.getFRSData().subscribe(frsData => {
-      this.alldatas = frsData.data;
+      this.alldatas = this.processData(frsData.data);
       this.mapIdCount = frsData.mapIdCount[0];
-      for (const key in this.mapIdCount) {
-        if (this.mapIdCount.hasOwnProperty(key)) {
-          this.count = this.count +  this.mapIdCount[key];
-        }
-      }
+      this.identifiedCount = frsData.data.reduce((acc, cur) => cur.AlarmType === 'User Identified' ? ++acc : acc, 0);
+      this.notIdentifiedCount = frsData.data.reduce((acc, cur) => cur.AlarmType === 'User Detected' ? ++acc : acc, 0);
     });
 
       this.dtOptions = {
@@ -43,16 +41,17 @@ export class ReportComponentComponent implements OnInit , OnChanges {
           'print',
           'excel',
           'pdf',
-        ]
+        ],
+	      order:[3, 'desc']
       };
     this.displayedColumnsAlertReport = ['Image',
     'Name',
-    'Id',
+    'Emp Id',
     'Time',
     'Date',
-    'Location',
-    'Detection status',
-    'No of Detection'];
+    'Loc',
+    'Identification',
+    'Detections'];
     subject.subscribe(
       msg => this.adddata(msg), // alert('msg' + msg),  Called whenever there is a message from the server.
       err => console.log(err), // Called if at any point WebSocket API signals some kind of error.
@@ -64,11 +63,8 @@ export class ReportComponentComponent implements OnInit , OnChanges {
     this.service.getFRSData().subscribe(frsData => {
       this.alldatas = frsData.data;
       this.mapIdCount = frsData.mapIdCount[0];
-      for (const key in this.mapIdCount) {
-        if (this.mapIdCount.hasOwnProperty(key)) {
-          this.count = this.count +  this.mapIdCount[key];
-        }
-      }
+      this.identifiedCount = frsData.data.filter((obj) => obj.AlarmType === 'User Identified').length;
+      this.notIdentifiedCount = frsData.data.filter((obj) => obj.AlarmType === 'User Detected').length;
     });
   }
 
@@ -76,23 +72,40 @@ export class ReportComponentComponent implements OnInit , OnChanges {
         this.tablearray = [];
         this.tablearray.push(r.message);
         this.tablearray.forEach(element => {
-          if (this.mapIdCount !== undefined) {
-            this.mapIdCount[element.Id] = this.mapIdCount[element.Id] +  1;
-            this.count = this.count + 1;
+          if (this.mapIdCount !== undefined && this.mapIdCount[element.SubjectCode]) {
+            this.mapIdCount[element.SubjectCode] = this.mapIdCount[element.SubjectCode] +  1;
+         }
+
+         if (this.mapIdCount && (this.mapIdCount[element.SubjectCode] === undefined || this.mapIdCount[element.SubjectCode] === null)) {
+          this.mapIdCount[element.SubjectCode] = this.mapIdCount[element.SubjectCode] + 1;
+         }
+
+          if (element.AlarmType === 'User Identified') {
+            this.identifiedCount = this.identifiedCount + 1;
+         }
+         if (element.AlarmType === 'User Detected') {
+            this.notIdentifiedCount = this.notIdentifiedCount + 1;
+         }
+         if (element.TimeStamp!==undefined && element.TimeStamp!== null){
+	          let utcDate =  new Date(parseInt(element.TimeStamp.substring(6, element.TimeStamp.slice(1, -1).length-4)));
+            utcDate.setHours(utcDate.getHours() + 5);
+            utcDate.setMinutes(utcDate.getMinutes() + 30);
+            let dtValue = moment(utcDate); 
+            element.dateStr = dtValue.format('ddd, MMM D, YYYY');
+            element.timeStr = dtValue.format('h:mm:ss A');
           }
-          const dateStr = moment(element.SubjectExpiryDate).format('ddd, MMM D, YYYY');
-          const timeStr = moment(element.SubjectExpiryDate).format('h:mm:ss A');
+
           this.tablerow = `<tr _ngcontent-mib-c8="" role="row" class="odd">
           <td>
             <img width="51px"  src="` + element.SubjectFaceImage + `">
           </td>
-          <td>` + element.SubjectName + `</td>
-          <td>` + element.Id + `</td>
-          <td>` + timeStr + `</td>
-          <td>` + dateStr + `</td>
+          <td>` + element.SubjectName +' '+ element.SubjectLastName+ `</td>
+          <td>` + element.SubjectCode + `</td>
+          <td>` + element.timeStr + `</td>
+          <td>` + element.dateStr + `</td>
           <td>` + element.CameraId + `</td>
-          <td>` + element.AlarmType + `</td>
-          <td>` + ((this.mapIdCount !== undefined) ? this.mapIdCount[element.Id] : '-') + `</td>
+          <td>` + (element && element.AlarmType === 'User Identified'? 'TRUE': 'FALSE') + `</td>
+          <td>` + ((this.mapIdCount !== undefined) ? this.mapIdCount[element.SubjectCode] : '-') + `</td>
           </tr>`;
         });
         $(this.tablerow).insertBefore('#DataTables_Table_0_wrapper>table>tbody>tr:first');
@@ -120,5 +133,19 @@ export class ReportComponentComponent implements OnInit , OnChanges {
   }
   closePopUp() {
     this.openReportTbl = false;
+  }
+
+  processData(dataArr) {
+    return dataArr.map((ele) => {
+      if (ele.TimeStamp !== undefined && ele.TimeStamp !== null) {
+     let utcDate =  new Date(parseInt(ele.TimeStamp.substring(6, ele.TimeStamp.slice(1, -1).length-4)));
+     utcDate.setHours(utcDate.getHours() + 5);
+     utcDate.setMinutes(utcDate.getMinutes() + 30);
+     let dtValue = moment(utcDate);
+      ele.dateStr = dtValue.format('ddd, MMM D, YYYY');
+      ele.timeStr = dtValue.format('h:mm:ss A');
+      return ele;
+      }
+    });
   }
 }
