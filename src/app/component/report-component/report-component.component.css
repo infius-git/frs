@@ -12,6 +12,15 @@ html
     /* width: 2vw;
     margin-bottom: .2vw; */
 }
+.visitor_detailstbl
+{
+    color: #fff;
+    text-align: center;
+}
+.paginate_button
+{
+    color: #fff !important;
+}
 .navbar .row{
     width: 100%;
 }
@@ -291,12 +300,12 @@ button.close {
  .team_stats_section
  {
      
-padding: 21% 15px 30px;
+    padding: 21% 10px 15px 30px;
  }
  @media screen and (max-device-width:1400px) and (min-width:1200px) {
      
      .detecteduserdiv {
-        height: 296px;
+        height: 140px;
         overflow-y: auto;
         overflow-x: hidden;
     }
