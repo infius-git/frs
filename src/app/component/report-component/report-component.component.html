@@ -38,7 +38,7 @@
         </div>
     </nav>
 </div>
-    <div class="row">
+<div class="row">
     <div class="col-md-1 sidebar">
         <li _ngcontent-sig-c2="" class="sidebar-sticky">
             <ul _ngcontent-sig-c2="" class="nav flex-column">
@@ -70,16 +70,18 @@
             <tbody>
                 <tr *ngFor="let element of alldatas" (click)="openReportTable(element)">
                     <td>
-                    <img *ngIf="element.AlarmType=='User Detected'" class="redborder" width="51px" [src]="element.SubjectFaceImage">
-                    <img *ngIf="element.AlarmType!='User Detected'" class="greenborder" width="51px" [src]="element.SubjectFaceImage">
+                        <img *ngIf="element && element.AlarmType=='User Detected'" class="redborder" width="51px" [src]="element.SubjectFaceImage">
+                        <img *ngIf="element && element.AlarmType!='User Detected'" class="greenborder" width="51px" [src]="element.SubjectFaceImage">
                     </td>
-                    <td>{{element.SubjectName}}</td>
-                    <td>{{element.Id}}</td>
-                    <td>{{element.SubjectExpiryDate.slice(1, -1).substring(5, element.SubjectExpiryDate.slice(1, -1).length-1) | date: 'mediumTime'}}</td>
-                    <td>{{element.SubjectExpiryDate.slice(1, -1).substring(5, element.SubjectExpiryDate.slice(1, -1).length-1) | date: 'EEE, MMM d, y'}}</td>
-                    <td>{{element.CameraId ? element.CameraId : ''}}</td>
-                    <td>{{element.AlarmType}}</td>
-                    <td>{{mapIdCount[element.Id]}}</td>
+                    <td>{{element ? element.SubjectName+' '+element.SubjectLastName : '-'}}</td>
+                    <td>{{element ? element.SubjectCode : '-'}}</td>
+                    <!-- <td>{{element.SubjectExpiryDate.slice(1, -1).substring(5, element.SubjectExpiryDate.slice(1, -1).length-1) | date: 'mediumTime'}}</td>
+                    <td>{{element.SubjectExpiryDate.slice(1, -1).substring(5, element.SubjectExpiryDate.slice(1, -1).length-1) | date: 'EEE, MMM d, y'}}</td> -->
+                    <td>{{element ? element.timeStr : '-'}}</td>
+                    <td>{{element ? element.dateStr : '-'}}</td>
+                    <td>{{element && element.CameraId ? element.CameraId : ''}}</td>
+                    <td>{{element && element.AlarmType === 'User Identified'? 'TRUE': 'FALSE'}}</td>
+                    <td>{{element ? mapIdCount[element.SubjectCode] : '-'}}</td>
                 </tr>
 
             </tbody>
@@ -152,18 +154,20 @@
             <h4>alert (false detection)</h4>
             <hr>
             <div class="detecteduserdiv">
-            <div *ngFor="let element of alldatas" class="row" (click)="openReportTable(element)">
-                <div *ngIf="element.AlarmType==='User Detected'" class="col-sm-12 col-md-12 col-lg-12 progress_chart">
-                    <div class="row mt12">
-                        <div class="col-sm-5 col-md-5 col-lg-5">
-                            <img alt="Proximity" [src]="element.SubjectFaceImage">
-                        </div>
-                        <div class="col-sm-7 col-md-7 col-lg-7 usernametxt">
-                            {{element.SubjectName}}
+                <div *ngFor="let element of alldatas" class="row" (click)="openReportTable(element)">
+                    <div *ngIf="element && element.AlarmType==='User Detected'" class="col-sm-12 col-md-12 col-lg-12 progress_chart">
+                        <div class="row mt12">
+                            <div class="col-sm-5 col-md-5 col-lg-5">
+                                <img alt="Proximity" [src]="element.SubjectFaceImage">
+                            </div>
+                            <div class="col-sm-7 col-md-7 col-lg-7 usernametxt">
+                                {{element.SubjectName}}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
             
             <div class="row" (click)="openReportTable(element)">
                 <div class="col-sm-4 col-md-4 col-lg-4 progress_chart">
@@ -198,46 +202,48 @@
                 </div>
             </div>
         </div>
+=======
+>>>>>>> ae40d05f5a031ede1697bf1ac7276e782343ce17
         </div>
     </div>
 </div>
-    <div class="row" style="width:100%;padding-left:10px;margin-bottom: 12px;margin:0px;background:#2c2d39;">
-        <div class="Surveillance orangebg">
-            <!-- <div *ngIf="count" class="rfcounttxt">{{count?count:'0'}}</div> -->
-            <div class="rfcounttxt">0</div>
-            <div class="rftxt">Total No Detected</div>
-        </div>
-        <div class="Surveillance redbg">
-            <div class="rfcounttxt">06</div>
-            <div class="rftxt">False Recognition Alert</div>
-        </div>
-        <div class="Surveillance greybg">
-            <div class="rfcounttxt">07</div>
-            <div class="rftxt">Active FRS Cameras</div>
-        </div>
-        <div class="Surveillance dgreybg">
-            <div class="row" style="margin: auto;margin-bottom: -26px;">
-                <div class="col-md-2 rftxt" style="margin-top: 28px;">TIME</div>
-                <div class="col-md-5 rfcounttxt">01:20</div>
-                <div class="col-md-1 rftxt" style="margin-top: 28px;">PM</div>
-                <div class="col-md-2"></div>
-            </div>
-            <div class="row" style=" margin: auto;">
-                <div class="col-md-2 rftxt" style="margin-top: 28px;">Date</div>
-                <div class="col-md-5 rfcounttxt" style="font-size:3.4vw;">10.11.2019</div>
-                <div class="col-md-2"></div>
-            </div>
-        </div>
-        <div class="Surveillance">
-            <div class="row">
-                <div class="col-md-12">
-                    <!-- <h4>Our Partners</h4> -->
-                    <img alt="" src="../../assets/images/rblogo.jpg">
-                </div>
-            </div>
-        </div>
-        <div style="clear:both;"></div>
+<div class="row" style="width:100%;padding-left:10px;margin-bottom: 12px;margin:0px;background:#2c2d39;">
+    <div class="Surveillance orangebg">
+        <!-- <div *ngIf="count" class="rfcounttxt">{{count?count:'0'}}</div> -->
+        <div class="rfcounttxt">{{identifiedCount}}</div>
+        <div class="rftxt">Identified</div>
     </div>
+    <div class="Surveillance redbg">
+        <div class="rfcounttxt">{{notIdentifiedCount}}</div>
+        <div class="rftxt">Not Identified</div>
+    </div>
+    <div class="Surveillance greybg">
+        <div class="rfcounttxt">07</div>
+        <div class="rftxt">Active FRS Cameras</div>
+    </div>
+    <div class="Surveillance dgreybg">
+        <div class="row" style="margin: auto;margin-bottom: -26px;">
+            <div class="col-md-2 rftxt" style="margin-top: 28px;">TIME</div>
+            <div class="col-md-5 rfcounttxt">01:20</div>
+            <div class="col-md-1 rftxt" style="margin-top: 28px;">PM</div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row" style=" margin: auto;">
+            <div class="col-md-2 rftxt" style="margin-top: 28px;">Date</div>
+            <div class="col-md-5 rfcounttxt" style="font-size:3.4vw;">10.11.2019</div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <div class="Surveillance">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- <h4>Our Partners</h4> -->
+                <img alt="" src="../../assets/images/rblogo.jpg">
+            </div>
+        </div>
+    </div>
+    <div style="clear:both;"></div>
+</div>
 
 
 <!-- <div *ngIf="openReportTbl" class="white_content_visitor visitor_detailstbl" style="width: 42%;position: absolute;top: 11%;left: 27%;">
