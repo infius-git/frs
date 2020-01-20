@@ -70,8 +70,8 @@
             <tbody>
                 <tr *ngFor="let element of alldatas" (click)="openReportTable(element)">
                     <td>
-                        <img *ngIf="element && element.AlarmType=='User Detected'" class="redborder" width="51px" [src]="element.SubjectFaceImage">
-                        <img *ngIf="element && element.AlarmType!='User Detected'" class="greenborder" width="51px" [src]="element.SubjectFaceImage">
+                        <img *ngIf="element && element.AlarmType ==='User Detected'" class="redborder" width="51px" [src]="element.SubjectFaceImage">
+                        <img *ngIf="element && element.AlarmType==='User Identified'" class="greenborder" width="51px" [src]="element.SubjectFaceImage">
                     </td>
                     <td>{{element ? element.SubjectName+' '+element.SubjectLastName : '-'}}</td>
                     <td>{{element ? element.SubjectCode : '-'}}</td>
@@ -166,44 +166,40 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row" (click)="openReportTable(element)">
+                    <div class="col-sm-4 col-md-4 col-lg-4 progress_chart">
+                        <div class="row mt12">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <img alt="Proximity" src="./assets/images/Source10_13748_53_FrameImage.jpg">
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 usernametxt text-center">
+                                test
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4 progress_chart">
+                        <div class="row mt12">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <img alt="Proximity" src="./assets/images/Source10_13748_53_FrameImage.jpg">
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 usernametxt text-center">
+                                test
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4 progress_chart">
+                        <div class="row mt12">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <img alt="Proximity" src="./assets/images/Source10_13748_53_FrameImage.jpg">
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12 usernametxt text-center">
+                                test
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-<<<<<<< HEAD
-            
-            <div class="row" (click)="openReportTable(element)">
-                <div class="col-sm-4 col-md-4 col-lg-4 progress_chart">
-                    <div class="row mt12">
-                        <div class="col-sm-12 col-md-12 col-lg-12">
-                            <img alt="Proximity" src="./assets/images/Source10_13748_53_FrameImage.jpg">
-                        </div>
-                        <div class="col-sm-12 col-md-12 col-lg-12 usernametxt text-center">
-                            test
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-md-4 col-lg-4 progress_chart">
-                    <div class="row mt12">
-                        <div class="col-sm-12 col-md-12 col-lg-12">
-                            <img alt="Proximity" src="./assets/images/Source10_13748_53_FrameImage.jpg">
-                        </div>
-                        <div class="col-sm-12 col-md-12 col-lg-12 usernametxt text-center">
-                            test
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-md-4 col-lg-4 progress_chart">
-                    <div class="row mt12">
-                        <div class="col-sm-12 col-md-12 col-lg-12">
-                            <img alt="Proximity" src="./assets/images/Source10_13748_53_FrameImage.jpg">
-                        </div>
-                        <div class="col-sm-12 col-md-12 col-lg-12 usernametxt text-center">
-                            test
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-=======
->>>>>>> ae40d05f5a031ede1697bf1ac7276e782343ce17
         </div>
     </div>
 </div>
@@ -307,44 +303,44 @@
                 </div> -->
                 <div style="clear:both;"></div>
                 <div class="visitor_detailstbl">
-                   <div class="row">
-                       <div class="col-md-6">
-                           <div>
-                        <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div>
+                                <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
+                            </div>
+                            <div>
+                                <span class="text-center">Person Name</span>
+                            </div>
                         </div>
-                        <div>
-                        <span class="text-center">Person Name</span>
+                        <div class="col-md-6">
+                            <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
+                            <span class="text-center">Person Name</span>
                         </div>
-                       </div>
-                       <div class="col-md-6">
-                        <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
-                        <span class="text-center">Person Name</span>
-                       </div>
-                       <div class="col-md-12">
-                           <table class="table">
-                               <tr>
-                                   <td>Visitor's Name</td>
-                                   <td>Rahul</td>
-                               </tr>
-                               <tr>
-                                <td>Employee Id</td>
-                                <td>123</td>
-                            </tr>
+                        <div class="col-md-12">
+                            <table class="table">
+                                <tr>
+                                    <td>Visitor's Name</td>
+                                    <td>Rahul</td>
+                                </tr>
+                                <tr>
+                                    <td>Employee Id</td>
+                                    <td>123</td>
+                                </tr>
                             </table>
-                       </div>
-                       <div class="col-md-4">
-                        <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
-                        <span class="text-center">Person Name</span>
-                       </div>
-                       <div class="col-md-4">
-                        <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
-                        <span class="text-center">Person Name</span>
-                       </div>
-                       <div class="col-md-4">
-                        <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
-                        <span class="text-center">Person Name</span>
-                       </div>
-                   </div>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
+                            <span class="text-center">Person Name</span>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
+                            <span class="text-center">Person Name</span>
+                        </div>
+                        <div class="col-md-4">
+                            <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
+                            <span class="text-center">Person Name</span>
+                        </div>
+                    </div>
                 </div>
                 <div style="clear: both"></div>
             </div>
