@@ -89,41 +89,7 @@
     </div>
 
     <div class="col-md-3 col-lg-3 col-xl-3">
-        <div class="col-sm-12 col-md-12 col-lg-12 team_stats_section">
-            <h4>herta thershold</h4>
-            <hr>
-            <div class="row">
-                <div class="col-sm-9 col-md-9 col-lg-9 progress_chart">
-                    <!-- <strong>&nbsp;</strong> -->
-                    <!-- <span class="pull-right">67</span> -->
-                    <div class="progress progress-danger active">
-                        <div class="bar" style="width: 67%;"></div>
-                    </div>
-                    <!-- <strong>&nbsp;</strong> -->
-                    <!-- <span class="pull-right">28</span> -->
-                    <div class="progress progress-info active">
-                        <div class="bar" style="width: 28%;"></div>
-                    </div>
-                    <!-- <strong>&nbsp;</strong> -->
-                    <!-- <span class="pull-right">14</span> -->
-                    <div class="progress progress-warning active">
-                        <div class="bar" style="width: 14%;"></div> 14
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="margin-top: 11px;">
-                <div class="col-sm-3 col-md-3 col-lg-3 white">
-                    <span><i class="fa fa-square alerts"></i></span> Alert
-                </div>
-                <div class="col-sm-5 col-md-5 col-lg-5 white">
-                    <span><i class="fa fa-square ldetection"></i></span> Low Detection
-                </div>
-                <div class="col-sm-4 col-md-4 col-lg-4 white">
-                    <span><i class="fa fa-square detected"></i></span> Detected
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-12 team_stats_section" style="padding: 15px 30px; margin-top:10px">
+        <div class="col-sm-12 col-md-12 col-lg-12 team_stats_section" style="padding: 15px 30px; margin-top:21%">
             <h4>location with detection</h4>
             <hr>
             <div class="row">
@@ -154,7 +120,7 @@
             <h4>alert (false detection)</h4>
             <hr>
             <div class="detecteduserdiv">
-                <div *ngFor="let element of alldatas" class="row" (click)="openReportTable(element)">
+                <!-- <div *ngFor="let element of alldatas" class="row" (click)="openReportTable(element)">
                     <div *ngIf="element && element.AlarmType==='User Detected'" class="col-sm-12 col-md-12 col-lg-12 progress_chart">
                         <div class="row mt12">
                             <div class="col-sm-5 col-md-5 col-lg-5">
@@ -165,36 +131,16 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="row" (click)="openReportTable(element)">
-                    <div class="col-sm-4 col-md-4 col-lg-4 progress_chart">
+                <div class="row">
+                    <div class="col-sm-4 col-md-4 col-lg-4 progress_chart" *ngFor="let element of alldatas" (click)="openReportTable(element)">
                         <div class="row mt12">
                             <div class="col-sm-12 col-md-12 col-lg-12">
-                                <img alt="Proximity" src="./assets/images/Source10_13748_53_FrameImage.jpg">
+                                <img alt="Proximity" [src]="element.SubjectFaceImage">
                             </div>
                             <div class="col-sm-12 col-md-12 col-lg-12 usernametxt text-center">
-                                test
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-md-4 col-lg-4 progress_chart">
-                        <div class="row mt12">
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <img alt="Proximity" src="./assets/images/Source10_13748_53_FrameImage.jpg">
-                            </div>
-                            <div class="col-sm-12 col-md-12 col-lg-12 usernametxt text-center">
-                                test
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4 col-md-4 col-lg-4 progress_chart">
-                        <div class="row mt12">
-                            <div class="col-sm-12 col-md-12 col-lg-12">
-                                <img alt="Proximity" src="./assets/images/Source10_13748_53_FrameImage.jpg">
-                            </div>
-                            <div class="col-sm-12 col-md-12 col-lg-12 usernametxt text-center">
-                                test
+                                {{element.SubjectName}}
                             </div>
                         </div>
                     </div>
@@ -218,15 +164,15 @@
         <div class="rftxt">Active FRS Cameras</div>
     </div>
     <div class="Surveillance dgreybg">
-        <div class="row" style="margin: auto;margin-bottom: -26px;">
+        <div class="row" style="margin: auto;margin-bottom: -22px;">
             <div class="col-md-2 rftxt" style="margin-top: 28px;">TIME</div>
             <div class="col-md-5 rfcounttxt">01:20</div>
-            <div class="col-md-1 rftxt" style="margin-top: 28px;">PM</div>
+            <div class="col-md-1 rftxt" style="margin-top: 22px;margin-left: -24px;">PM</div>
             <div class="col-md-2"></div>
         </div>
         <div class="row" style=" margin: auto;">
-            <div class="col-md-2 rftxt" style="margin-top: 28px;">Date</div>
-            <div class="col-md-5 rfcounttxt" style="font-size:3.4vw;">10.11.2019</div>
+            <div class="col-md-2 rftxt" style="margin-top: 17px;">Date</div>
+            <div class="col-md-5 rfcounttxt">10.11.2019</div>
             <div class="col-md-2"></div>
         </div>
     </div>
@@ -242,59 +188,10 @@
 </div>
 
 
-<!-- <div *ngIf="openReportTbl" class="white_content_visitor visitor_detailstbl" style="width: 42%;position: absolute;top: 11%;left: 27%;">
-    <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true">&times;</button>
-    <h3>Visitors</h3>
-    <div class="popup_content">
-        <div class="row">
-
-            <div class="col-md-12">
-                <div class="visitor_profile ml-0"><span><img alt="" src="../../../assets/images/visitor_img1.png"></span></div>
-                <div class="visitor_details">
-                    <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4>
-                    <h4>{{dataSource}}</h4>
-                    <p>Contact Number : +91 98928666</p>
-                </div>
-                <div style="clear:both;"></div>
-                <div class="visitor_detailstbl">
-                    <table class="table">
-                        <tr>
-                            <td>Contact Details</td>
-                            <td>98928666</td>
-                        </tr>
-                        <tr>
-                            <td>Last Visited Date</td>
-                            <td>24-09-2019 1:00 PM
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Frequent Zones Visited</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Invitee</td>
-                            <td>Roshan, Flat - 408</td>
-                        </tr>
-                        <tr>
-                            <td>Breach</td>
-                            <td><span class="redcolor">Yes on 27th Sep 2019</span></td>
-                        </tr>
-                    </table>
-                </div>
-                <div style="clear: both"></div>
-            </div>
-        </div>
-
-    </div>
-</div> -->
-
 <div *ngIf="openReportTbl" class="white_content_visitor visitor_detailstbl" style="width: 27%;position: fixed;top: 11%;left: 27%;">
     <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true">&times;</button>
     <h3>Visitors</h3>
     <div class="popup_content">
-        <div class="row">
-
-            <div class="col-md-12">
                 <!-- <div class="visitor_profile ml-0"><span><img alt="" src="../../../assets/images/visitor_img1.png"></span></div> -->
                 <!-- <div class="visitor_details">
                     <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4>
@@ -316,6 +213,22 @@
                             <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
                             <span class="text-center">Person Name</span>
                         </div>
+                    </div>
+                        <div class="row" style="margin-top: 13px;">
+                            <div class="col-md-4">
+                                <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
+                                <span class="text-center">Person Name</span>
+                            </div>
+                            <div class="col-md-4">
+                                <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
+                                <span class="text-center">Person Name</span>
+                            </div>
+                            <div class="col-md-4">
+                                <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
+                                <span class="text-center">Person Name</span>
+                            </div>
+                        </div>
+                        <div class="row">
                         <div class="col-md-12">
                             <table class="table">
                                 <tr>
@@ -328,23 +241,10 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="col-md-4">
-                            <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
-                            <span class="text-center">Person Name</span>
                         </div>
-                        <div class="col-md-4">
-                            <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
-                            <span class="text-center">Person Name</span>
-                        </div>
-                        <div class="col-md-4">
-                            <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
-                            <span class="text-center">Person Name</span>
-                        </div>
+                        
                     </div>
                 </div>
                 <div style="clear: both"></div>
             </div>
-        </div>
-
-    </div>
-</div>
+        

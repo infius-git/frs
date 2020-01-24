@@ -100,7 +100,6 @@ hr{
     -ms-flex: inherit !important;
     flex: inherit !important;
     max-width: inherit !important;
-    padding-bottom: 10px;
     margin: 0 !important;
 }
 .detecteduserdiv
@@ -140,13 +139,13 @@ hr{
 .rfcounttxt
 {
     color: white;
-    font-size: 4em;
+    font-size: 3em;
     margin: 0px 10px;
 }
 .rftxt
 {
     color: white;
-    font-size: 1.7vw;
+    font-size: 1.6vw;
     margin: 0px 10px;
 }
 
@@ -305,7 +304,7 @@ button.close {
  @media screen and (max-device-width:1400px) and (min-width:1200px) {
      
      .detecteduserdiv {
-        height: 140px;
+        height: 120px;
         overflow-y: auto;
         overflow-x: hidden;
     }
@@ -474,4 +473,12 @@ button.close {
     }
     html{
         overflow-x:hidden;
+    }
+    .detecteduserback{
+    background: red;
+    padding: 10px;
+    }
+
+    .visitor_detailstbl table tr td{
+        font-size: 13px !important;
     }
