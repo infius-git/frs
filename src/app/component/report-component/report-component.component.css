@@ -136,11 +136,29 @@ hr{
 {
     background:#595551;
 }
+h4 {
+    font-size: 18px !important;
+    color: #ffffff !important;
+    font-family: 'Barlow Semi Condensed', sans-serif !important;
+    font-weight: 400 !important;
+    text-transform: uppercase !important;
+}
 .rfcounttxt
 {
     color: white;
-    font-size: 3em;
+    font-size: 2.4em;
     margin: 0px 10px;
+}
+.displaynone
+{
+    display: none !important;
+}
+.pad0
+{
+    padding: 0 !important;
+}
+.charttab .active{
+    border-bottom: 1px solid #7a7272;
 }
 .rftxt
 {

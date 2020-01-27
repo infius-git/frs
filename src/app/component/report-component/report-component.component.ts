@@ -27,6 +27,15 @@ export class ReportComponentComponent implements OnInit , OnChanges {
   constructor(private service: ProximityService, private _sanitizer: DomSanitizer) {}
 
   ngOnInit() {
+
+    $('.tabitem').click(function(){
+      $('.tabitem').removeClass('active');
+      $(this).addClass('active');
+      $('.itemtabdiv').addClass('displaynone');
+      var itemtabdata=$(this).attr('data');
+      $('.itemtab'+itemtabdata).removeClass('displaynone');
+    })
+
     this.service.getFRSData().subscribe(frsData => {
       this.alldatas = this.processData(frsData.data);
       this.mapIdCount = frsData.mapIdCount[0];
@@ -136,6 +145,7 @@ export class ReportComponentComponent implements OnInit , OnChanges {
     this.openReportTbl = false;
   }
 
+  
   detectedPopup(){
     var popupdata=$('#detected-popup').html();
     $('#detected-popup-new').html(popupdata);
