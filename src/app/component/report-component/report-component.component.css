@@ -149,16 +149,35 @@ h4 {
     font-size: 2.4em;
     margin: 0px 10px;
 }
+.itemtabdiv
+{
+    height: 123px;
+}
+
+hr {
+    margin-top: 0 !important`;
+    margin-bottom: 0 !important;
+}
 .displaynone
 {
     display: none !important;
 }
-.pad0
+.padtb10
 {
-    padding: 0 !important;
+    padding: 10px 0px !important;
+}
+.charttab
+{
+    margin:0px !important;
+    cursor:pointer;
 }
 .charttab .active{
-    border-bottom: 1px solid #7a7272;
+    border-bottom: 1px solid #4a4c5d;
+    background: #4a4c5d;
+}
+.charttab :hover{
+    border-bottom: 1px solid #4a4c5d;
+    background: #4a4c5d;
 }
 .rftxt
 {

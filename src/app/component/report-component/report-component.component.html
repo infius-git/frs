@@ -61,7 +61,8 @@
         </li>
     </div>
     <div class="col-md-8" style="margin-top: 5%;">
-        <table *ngIf="alldatas" datatable [dtOptions]="dtOptions" class="row-border hover">
+        <button (click)="adddata()">test</button>
+        <table *ngIf="alldatas" id="example" class="row-border hover">
             <thead>
                 <tr>
                     <th *ngFor="let filterCol of displayedColumnsAlertReport">{{filterCol}}</th>
@@ -93,9 +94,9 @@
             <h4>location with detection</h4>
             <hr>
             <div class="row charttab">
-                <div class="col-md-4 text-center text-white pad0 active tabitem" data="1">Shift Wise</div>
-                <div class="col-md-4 text-center text-white pad0 tabitem" data="2">Hourly</div>
-                <div class="col-md-4 text-center text-white pad0 tabitem" data="3">Area Wise</div>
+                <div class="col-md-4 text-center text-white padtb10 active tabitem" data="1">Shift Wise</div>
+                <div class="col-md-4 text-center text-white padtb10 tabitem" data="2">Hourly</div>
+                <div class="col-md-4 text-center text-white padtb10 tabitem" data="3">Area Wise</div>
             </div>
             <div class="row itemtab1 itemtabdiv">
                 <div class="col-sm-7 col-md-7 col-lg-7 progress_chart">

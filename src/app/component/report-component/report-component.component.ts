@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import {DomSanitizer, SafeStyle, SafeUrl, SafeHtml, SafeScript, SafeResourceUrl} from '@angular/platform-browser';
 import { webSocket } from 'rxjs/webSocket';
 import * as $ from 'jquery';
+import 'datatables.net';
 
 const subject = webSocket('ws://localhost:8081/');
 
@@ -35,7 +36,9 @@ export class ReportComponentComponent implements OnInit , OnChanges {
       var itemtabdata=$(this).attr('data');
       $('.itemtab'+itemtabdata).removeClass('displaynone');
     })
-
+    $(document).ready(function(){
+      $('#example').DataTable();
+    })
     this.service.getFRSData().subscribe(frsData => {
       this.alldatas = this.processData(frsData.data);
       this.mapIdCount = frsData.mapIdCount[0];
@@ -43,16 +46,16 @@ export class ReportComponentComponent implements OnInit , OnChanges {
       this.notIdentifiedCount = frsData.data.reduce((acc, cur) => cur.AlarmType === 'User Detected' ? ++acc : acc, 0);
     });
 
-      this.dtOptions = {
-        dom: 'Bfrtip',
-        buttons: [
-          'copy',
-          'print',
-          'excel',
-          'pdf',
-        ],
-	      order:[3, 'desc']
-      };
+      // this.dtOptions = {
+      //   dom: 'Bfrtip',
+      //   buttons: [
+      //     'copy',
+      //     'print',
+      //     'excel',
+      //     'pdf',
+      //   ],
+	    //   order:[3, 'desc']
+      // };
     this.displayedColumnsAlertReport = ['Image',
     'Name',
     'Emp Id',
@@ -104,21 +107,32 @@ export class ReportComponentComponent implements OnInit , OnChanges {
             element.dateStr = dtValue.format('ddd, MMM D, YYYY');
             element.timeStr = dtValue.format('h:mm:ss A');
           }
-
-          this.tablerow = `<tr _ngcontent-mib-c8="" role="row" class="odd">
-          <td>
-            <img width="51px"  src="` + element.SubjectFaceImage + `">
-          </td>
-          <td>` + element.SubjectName +' '+ element.SubjectLastName+ `</td>
-          <td>` + element.SubjectCode + `</td>
-          <td>` + element.timeStr + `</td>
-          <td>` + element.dateStr + `</td>
-          <td>` + element.CameraId + `</td>
-          <td>` + (element && element.AlarmType === 'User Identified'? 'TRUE': 'FALSE') + `</td>
-          <td>` + ((this.mapIdCount !== undefined) ? this.mapIdCount[element.SubjectCode] : '-') + `</td>
-          </tr>`;
+          this.tablerow=$('#example').DataTable();
+          this.tablerow.row.add([
+          '<img width="51px"  src="' + element.SubjectFaceImage + '">',
+          element.SubjectName +' '+ element.SubjectLastName,
+          element.SubjectCode,
+          element.timeStr,
+          element.dateStr,
+          element.CameraId,
+          (element && element.AlarmType === 'User Identified'? 'TRUE': 'FALSE'),
+          ((this.mapIdCount !== undefined) ? this.mapIdCount[element.SubjectCode] : '-'),
+        ]).draw();
+          // this.tablerow = `<tr _ngcontent-mib-c8="" role="row" class="odd">
+          // <td>
+          //   <img width="51px"  src="` + element.SubjectFaceImage + `">
+          // </td>
+          // <td>` + element.SubjectName +' '+ element.SubjectLastName+ `</td>
+          // <td>` + element.SubjectCode + `</td>
+          // <td>` + element.timeStr + `</td>
+          // <td>` + element.dateStr + `</td>
+          // <td>` + element.CameraId + `</td>
+          // <td>` + (element && element.AlarmType === 'User Identified'? 'TRUE': 'FALSE') + `</td>
+          // <td>` + ((this.mapIdCount !== undefined) ? this.mapIdCount[element.SubjectCode] : '-') + `</td>
+          // </tr>`;
         });
-        $(this.tablerow).insertBefore('#DataTables_Table_0_wrapper>table>tbody>tr:first');
+        //$(this.tablerow).insertBefore('#DataTables_Table_0_wrapper>table>tbody>tr:first');
+     
   }
 
   /* public transform(value: string, type: string): SafeHtml | SafeStyle | SafeScript | SafeUrl | SafeResourceUrl {
