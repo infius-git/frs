@@ -67,6 +67,7 @@ export class ProximityService {
     }
 
     getFRSData(): Observable<any> {
+       // return this.http.get<any>('./assets/mock-data/GetLiveAlarms_Identified.json');
         return this.http.get<any>('http://localhost:8080/app/api');
     }
 

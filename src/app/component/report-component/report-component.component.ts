@@ -4,7 +4,6 @@ import * as moment from 'moment';
 import {DomSanitizer, SafeStyle, SafeUrl, SafeHtml, SafeScript, SafeResourceUrl} from '@angular/platform-browser';
 import { webSocket } from 'rxjs/webSocket';
 import * as $ from 'jquery';
-import 'datatables.net';
 
 const subject = webSocket('ws://localhost:8081/');
 
@@ -32,13 +31,11 @@ export class ReportComponentComponent implements OnInit , OnChanges {
     $('.tabitem').click(function(){
       $('.tabitem').removeClass('active');
       $(this).addClass('active');
-      $('.itemtabdiv').addClass('displaynone');
-      var itemtabdata=$(this).attr('data');
-      $('.itemtab'+itemtabdata).removeClass('displaynone');
+      // $('.itemtabdiv').addClass('displaynone');
+      // var itemtabdata=$(this).attr('data');
+      // $('.itemtab'+itemtabdata).removeClass('displaynone');
     })
-    $(document).ready(function(){
-      $('#example').DataTable();
-    })
+
     this.service.getFRSData().subscribe(frsData => {
       this.alldatas = this.processData(frsData.data);
       this.mapIdCount = frsData.mapIdCount[0];
@@ -46,16 +43,16 @@ export class ReportComponentComponent implements OnInit , OnChanges {
       this.notIdentifiedCount = frsData.data.reduce((acc, cur) => cur.AlarmType === 'User Detected' ? ++acc : acc, 0);
     });
 
-      // this.dtOptions = {
-      //   dom: 'Bfrtip',
-      //   buttons: [
-      //     'copy',
-      //     'print',
-      //     'excel',
-      //     'pdf',
-      //   ],
-	    //   order:[3, 'desc']
-      // };
+      this.dtOptions = {
+        dom: 'Bfrtip',
+        buttons: [
+          'copy',
+          'print',
+          'excel',
+          'pdf',
+        ],
+	      order:[3, 'desc']
+      };
     this.displayedColumnsAlertReport = ['Image',
     'Name',
     'Emp Id',
@@ -81,6 +78,8 @@ export class ReportComponentComponent implements OnInit , OnChanges {
   }
 
  adddata(r) {
+   console.log('Data Addition - '+ JSON.stringify(r.message));
+   console.log('Data Old - '+ JSON.stringify(this.alldatas));
         this.tablearray = [];
         this.tablearray.push(r.message);
         this.tablearray.forEach(element => {
@@ -99,7 +98,7 @@ export class ReportComponentComponent implements OnInit , OnChanges {
             this.notIdentifiedCount = this.notIdentifiedCount + 1;
             this.detectedPopup();
          }
-         if (element.TimeStamp!==undefined && element.TimeStamp!== null){
+         if (element.TimeStamp!==undefined && element.TimeStamp!== null) {
 	          let utcDate =  new Date(parseInt(element.TimeStamp.substring(6, element.TimeStamp.slice(1, -1).length-4)));
             utcDate.setHours(utcDate.getHours() + 5);
             utcDate.setMinutes(utcDate.getMinutes() + 30);
@@ -107,17 +106,22 @@ export class ReportComponentComponent implements OnInit , OnChanges {
             element.dateStr = dtValue.format('ddd, MMM D, YYYY');
             element.timeStr = dtValue.format('h:mm:ss A');
           }
-          this.tablerow=$('#example').DataTable();
-          this.tablerow.row.add([
-          '<img width="51px"  src="' + element.SubjectFaceImage + '">',
-          element.SubjectName +' '+ element.SubjectLastName,
-          element.SubjectCode,
-          element.timeStr,
-          element.dateStr,
-          element.CameraId,
-          (element && element.AlarmType === 'User Identified'? 'TRUE': 'FALSE'),
-          ((this.mapIdCount !== undefined) ? this.mapIdCount[element.SubjectCode] : '-'),
-        ]).draw();
+
+          if (this.alldatas) {
+            this.alldatas.push(element);
+          }
+
+        //   this.tablerow=$('#example').DataTable();
+        //   this.tablerow.row.add([
+        //   '<img width="51px"  src="' + element.SubjectFaceImage + '">',
+        //   element.SubjectName +' '+ element.SubjectLastName,
+        //   element.SubjectCode,
+        //   element.timeStr,
+        //   element.dateStr,
+        //   element.CameraId,
+        //   (element && element.AlarmType === 'User Identified'? 'TRUE': 'FALSE'),
+        //   ((this.mapIdCount !== undefined) ? this.mapIdCount[element.SubjectCode] : '-'),
+        // ]).draw();
           // this.tablerow = `<tr _ngcontent-mib-c8="" role="row" class="odd">
           // <td>
           //   <img width="51px"  src="` + element.SubjectFaceImage + `">
@@ -131,6 +135,7 @@ export class ReportComponentComponent implements OnInit , OnChanges {
           // <td>` + ((this.mapIdCount !== undefined) ? this.mapIdCount[element.SubjectCode] : '-') + `</td>
           // </tr>`;
         });
+        console.log('Data New - '+ JSON.stringify(this.alldatas));
         //$(this.tablerow).insertBefore('#DataTables_Table_0_wrapper>table>tbody>tr:first');
      
   }
