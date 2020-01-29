@@ -159,9 +159,11 @@ export class ReportComponentComponent implements OnInit , OnChanges {
   } */
   openReportTable(data) {
     this.openReportTbl = true;
+    $('#fullfade').show();
   }
   closePopUp() {
     this.openReportTbl = false;
+    $('#fullfade').hide();
   }
 
   
