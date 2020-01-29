@@ -60,8 +60,13 @@
             </ul>
         </li>
     </div>
+<<<<<<< HEAD
     <div class="col-md-8" style="margin-top: 5%;overflow-y: auto;height: 250px;">
         <table *ngIf="alldatas"  datatable [dtOptions]="dtOptions" class="row-border hover">
+=======
+    <div class="col-md-8" style="margin-top: 5%;">
+        <table *ngIf="alldatas" datatable [dtOptions]="dtOptions" class="row-border hover">
+>>>>>>> 51313bf34fffb787f684ec4ff0e6d1537d2790fe
             <thead>
                 <tr>
                     <th *ngFor="let filterCol of displayedColumnsAlertReport">{{filterCol}}</th>
@@ -119,8 +124,12 @@
                     </div>
                 </div>
             </div>
-            <div class="row displaynone itemtab2 itemtabdiv"><div class="col-sm-12 col-md-12 col-lg-12 white mt12">Hourly</div></div>
-            <div class="row displaynone itemtab3 itemtabdiv"><div class="col-sm-12 col-md-12 col-lg-12 white mt12">Area Wise</div></div>
+            <div class="row displaynone itemtab2 itemtabdiv">
+                <div class="col-sm-12 col-md-12 col-lg-12 white mt12">Hourly</div>
+            </div>
+            <div class="row displaynone itemtab3 itemtabdiv">
+                <div class="col-sm-12 col-md-12 col-lg-12 white mt12">Area Wise</div>
+            </div>
         </div>
         <div class="col-sm-12 col-md-12 col-lg-12 team_stats_section" style="padding: 15px 30px; margin-top:10px">
             <h4>alert (false detection)</h4>
@@ -193,65 +202,69 @@
     <div style="clear:both;"></div>
 </div>
 <div id="detected-popup">
-<div *ngIf="openReportTbl" class="white_content_visitor visitor_detailstbl" style="width: 27%;position: fixed;top: 11%;left: 27%;">
-    <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true">&times;</button>
-    <h3>Visitors</h3>
-    <div class="popup_content">
-                <!-- <div class="visitor_profile ml-0"><span><img alt="" src="../../../assets/images/visitor_img1.png"></span></div> -->
-                <!-- <div class="visitor_details">
+    <div *ngIf="openReportTbl" class="white_content_visitor visitor_detailstbl" style="width: 27%;position: fixed;top: 11%;left: 27%;">
+        <button type="button" class="close" (click)="closePopUp()" data-dismiss="popover" aria-hidden="true">&times;</button>
+        <h3>Visitors</h3>
+        <div class="popup_content">
+            <!-- <div class="visitor_profile ml-0"><span><img alt="" src="../../../assets/images/visitor_img1.png"></span></div> -->
+            <!-- <div class="visitor_details">
                     <h4>{{!!selectedVisitor ? selectedVisitor.name: ''}}</h4>
                     <h4>{{dataSource}}</h4>
                     <p>Contact Number : +91 98928666</p>
                 </div> -->
-                <div style="clear:both;"></div>
-                <div class="visitor_detailstbl">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div>
-                                <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
-                            </div>
-                            <div>
-                                <span class="text-center">Person Name</span>
-                            </div>
+            <div style="clear:both;"></div>
+            <div class="visitor_detailstbl">
+                <div *ngIf="popUpData && genericUserImg" class="row">
+                    <div class="col-md-6">
+                        <div>
+                            <img src="{{popUpData && popUpData.SubjectFaceImage && popUpData.SubjectFaceImage !=='-' ? popUpData.SubjectFaceImage : genericUserImg}}" class="img-responsive">
                         </div>
-                        <div class="col-md-6">
-                            <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
-                            <span class="text-center">Person Name</span>
+                        <div>
+                            <span class="text-center">{{popUpData ? popUpData.SubjectName+' '+popUpData.SubjectLastName : '-'}}</span>
                         </div>
                     </div>
-                        <div class="row" style="margin-top: 13px;">
-                            <div class="col-md-4">
-                                <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
-                                <span class="text-center">Person Name</span>
-                            </div>
-                            <div class="col-md-4">
-                                <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
-                                <span class="text-center">Person Name</span>
-                            </div>
-                            <div class="col-md-4">
-                                <img src="./assets/images/Source10_13748_53_FrameImage.jpg" class="img-responsive">
-                                <span class="text-center">Person Name</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                        <div class="col-md-12">
-                            <table class="table">
-                                <tr>
-                                    <td>Visitor's Name</td>
-                                    <td>Rahul</td>
-                                </tr>
-                                <tr>
-                                    <td>Employee Id</td>
-                                    <td>123</td>
-                                </tr>
-                            </table>
-                        </div>
-                        </div>
-                        
+                    <div class="col-md-6">
+                        <img src="{{popUpData && popUpData.SubjectPhoto && popUpData.SubjectPhoto !=='-' ? popUpData.SubjectPhoto : genericUserImg}}" class="img-responsive">
+                        <span class="text-center">{{popUpData ? popUpData.SubjectName+' '+popUpData.SubjectLastName : '-'}}</span>
                     </div>
                 </div>
-                <div style="clear: both"></div>
+                <div class="row" style="margin-top: 13px;">
+                    <div class="col-md-4">
+                        <img src="{{popUpData && popUpData.SubjectModelImage && popUpData.SubjectModelImage !=='-' ? popUpData.SubjectModelImage : genericUserImg}}" class="img-responsive">
+                        <span class="text-center">{{popUpData ? popUpData.SubjectName+' '+popUpData.SubjectLastName : '-'}}</span>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{{popUpData && popUpData.SubjectPhoto && popUpData.SubjectPhoto !=='-' ? popUpData.SubjectPhoto : genericUserImg}}" class="img-responsive">
+                        <span class="text-center">{{popUpData ? popUpData.SubjectName+' '+popUpData.SubjectLastName : '-'}}</span>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="{{popUpData && popUpData.SubjectPhoto && popUpData.SubjectPhoto !=='-' ? popUpData.SubjectPhoto : genericUserImg}}" class="img-responsive">
+                        <span class="text-center">{{popUpData ? popUpData.SubjectName+' '+popUpData.SubjectLastName : '-'}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <tr>
+                                <td>Visitor's Name</td>
+                                <td>{{popUpData ? popUpData.SubjectName+' '+popUpData.SubjectLastName : '-'}}</td>
+                            </tr>
+                            <tr>
+                                <td>Employee Id</td>
+                                <td>{{popUpData && popUpData.AlarmType==='Identified' ? popUpData.SubjectCode : 'New Visitor'}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
             </div>
         </div>
+<<<<<<< HEAD
         <div id="detected-popup-new"></div>
         <div id="fullfade"></div>
+=======
+        <div style="clear: both"></div>
+    </div>
+</div>
+<div id="detected-popup-new"></div>
+>>>>>>> 51313bf34fffb787f684ec4ff0e6d1537d2790fe

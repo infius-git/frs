@@ -24,6 +24,8 @@ export class ReportComponentComponent implements OnInit , OnChanges {
   tablearray: any;
   tablerow: any;
   openReportTbl = false;
+  popUpData: any;
+  genericUserImg = "http://localhost:8080/app/api/images/generic-user.png";
   constructor(private service: ProximityService, private _sanitizer: DomSanitizer) {}
 
   ngOnInit() {
@@ -164,6 +166,7 @@ export class ReportComponentComponent implements OnInit , OnChanges {
   closePopUp() {
     this.openReportTbl = false;
     $('#fullfade').hide();
+    this.popUpData = null;
   }
 
   
