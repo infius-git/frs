@@ -98,7 +98,7 @@ export class ReportComponentComponent implements OnInit , OnChanges {
          }
          if (element.AlarmType === 'User Detected') {
             this.notIdentifiedCount = this.notIdentifiedCount + 1;
-            this.detectedPopup();
+            this.detectedPopup(element);
          }
          if (element.TimeStamp!==undefined && element.TimeStamp!== null) {
 	          let utcDate =  new Date(parseInt(element.TimeStamp.substring(6, element.TimeStamp.slice(1, -1).length-4)));
@@ -162,6 +162,7 @@ export class ReportComponentComponent implements OnInit , OnChanges {
   openReportTable(data) {
     this.openReportTbl = true;
     $('#fullfade').show();
+    this.popUpData = data;
   }
   closePopUp() {
     this.openReportTbl = false;
@@ -170,9 +171,10 @@ export class ReportComponentComponent implements OnInit , OnChanges {
   }
 
   
-  detectedPopup(){
-    var popupdata=$('#detected-popup').html();
-    $('#detected-popup-new').html(popupdata);
+  detectedPopup(data){
+   this.openReportTbl=true;
+   $('#fullfade').show();
+   this.popUpData = data;
   }
 
   processData(dataArr) {

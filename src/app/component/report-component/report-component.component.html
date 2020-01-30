@@ -60,13 +60,8 @@
             </ul>
         </li>
     </div>
-<<<<<<< HEAD
     <div class="col-md-8" style="margin-top: 5%;overflow-y: auto;height: 250px;">
         <table *ngIf="alldatas"  datatable [dtOptions]="dtOptions" class="row-border hover">
-=======
-    <div class="col-md-8" style="margin-top: 5%;">
-        <table *ngIf="alldatas" datatable [dtOptions]="dtOptions" class="row-border hover">
->>>>>>> 51313bf34fffb787f684ec4ff0e6d1537d2790fe
             <thead>
                 <tr>
                     <th *ngFor="let filterCol of displayedColumnsAlertReport">{{filterCol}}</th>
@@ -214,7 +209,7 @@
                 </div> -->
             <div style="clear:both;"></div>
             <div class="visitor_detailstbl">
-                <div *ngIf="popUpData && genericUserImg" class="row">
+            <div *ngIf="popUpData && genericUserImg" class="row {{popUpData.AlarmType}}">
                     <div class="col-md-6">
                         <div>
                             <img src="{{popUpData && popUpData.SubjectFaceImage && popUpData.SubjectFaceImage !=='-' ? popUpData.SubjectFaceImage : genericUserImg}}" class="img-responsive">
@@ -228,7 +223,7 @@
                         <span class="text-center">{{popUpData ? popUpData.SubjectName+' '+popUpData.SubjectLastName : '-'}}</span>
                     </div>
                 </div>
-                <div class="row" style="margin-top: 13px;">
+                <div class="row {{popUpData.AlarmType}}" style="margin-top: 13px;">
                     <div class="col-md-4">
                         <img src="{{popUpData && popUpData.SubjectModelImage && popUpData.SubjectModelImage !=='-' ? popUpData.SubjectModelImage : genericUserImg}}" class="img-responsive">
                         <span class="text-center">{{popUpData ? popUpData.SubjectName+' '+popUpData.SubjectLastName : '-'}}</span>
@@ -259,12 +254,7 @@
 
             </div>
         </div>
-<<<<<<< HEAD
-        <div id="detected-popup-new"></div>
-        <div id="fullfade"></div>
-=======
-        <div style="clear: both"></div>
     </div>
 </div>
-<div id="detected-popup-new"></div>
->>>>>>> 51313bf34fffb787f684ec4ff0e6d1537d2790fe
+        <div id="detected-popup-new"></div>
+        <div id="fullfade"></div>
