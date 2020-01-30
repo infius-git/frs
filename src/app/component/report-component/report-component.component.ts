@@ -37,7 +37,7 @@ export class ReportComponentComponent implements OnInit , OnChanges {
       // var itemtabdata=$(this).attr('data');
       // $('.itemtab'+itemtabdata).removeClass('displaynone');
     })
-
+    
     this.service.getFRSData().subscribe(frsData => {
       this.alldatas = this.processData(frsData.data);
       this.mapIdCount = frsData.mapIdCount[0];
@@ -175,6 +175,9 @@ export class ReportComponentComponent implements OnInit , OnChanges {
    this.openReportTbl=true;
    $('#fullfade').show();
    this.popUpData = data;
+   window.setTimeout(function(){
+    this.closePopUp();
+  },5000);
   }
 
   processData(dataArr) {
